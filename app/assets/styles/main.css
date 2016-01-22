@@ -1,0 +1,17 @@
+body {
+  background-color: #a9a9cc;
+}
+.headerTitle {
+  background: url("../images/gradient.png") repeat;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+.headerTitle h1 {
+  display: inline-block;
+  color: #C1BEFF;
+  padding: 0.3em;
+  margin: 0px;
+  font-family: Consolas;
+  font-weight: bold;
+}

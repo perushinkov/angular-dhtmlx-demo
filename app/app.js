@@ -8,9 +8,12 @@
  *
  * Main module of the application.
  */
+
+angular.module('dhxDirectives', []);
 angular
   .module('myApp', [
-    'ui.router'
+    'ui.router',
+    'dhxDirectives'
   ])
   .config(function ($stateProvider) {
     $stateProvider

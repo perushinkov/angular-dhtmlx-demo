@@ -2,18 +2,18 @@
 /**
  * Created by Emanuil on 25/01/2016.
  */
-angular.module('myApp')
-  .directive('dhxCombo', function factory() {
+angular.module('DhxDirectives')
+  .directive('dhxLayout', function factory() {
     return {
-      restrict: 'EA',
-      require: 'dhxCombo',
+      restrict: 'E',
+      require: 'dhxLayout',
       controller: function() {
       },
       scope: {
+        dhxLayoutCode : "@"
       },
       compile: function compile(tElement, tAttrs, transclude) {
-
-        return function (scope, element, attrs) {
+        return function (scope, element, attrs, ctrl) {
         }
       }
     };

@@ -18,6 +18,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-wiredep-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   //// Automatically load required Grunt tasks
   //require('jit-grunt')(grunt, { //TODO: Switch to that once all else is fine
   //  useminPrepare: 'grunt-usemin',
@@ -37,92 +38,90 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
 
-    //  // Watches files for changes and runs tasks based on the changed files
-    //  watch: {
-    //    bower: {
-    //      files: ['bower.json'],
-    //      tasks: ['wiredep']
-    //    },
-    //    js: {
-    //      files: ['<%= yeoman.app %>/{,*/}*.js'],
-    //      tasks: ['newer:jshint:all', 'newer:jscs:all'],
-    //      options: {
-    //        livereload: '<%= connect.options.livereload %>'
-    //      }
-    //    },
-    //    jsTest: {
-    //      files: ['test/spec/{,*/}*.js'],
-    //      tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
-    //    },
-    //    styles: {
-    //      files: ['<%= yeoman.app %>/assets/styles/{,*/}*.css'],
-    //      tasks: ['newer:copy:styles', 'postcss']
-    //    },
-    gruntfile: {
-      files: ['Gruntfile.js']
-    },
-    //    livereload: {
-    //      options: {
-    //        livereload: '<%= connect.options.livereload %>'
-    //      },
-    //      files: [
-    //        '<%= yeoman.app %>/{,*/}*.html',
-    //        '.tmp/styles/{,*/}*.css',
-    //        '<%= yeoman.app %>/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-    //      ]
-    //    }
-    //  },
-    //
-      // The actual grunt server settings
-      connect: {
+    // Watches files for changes and runs tasks based on the changed files
+    watch: {
+      //bower: {
+      //  files: ['bower.json'],
+      //  tasks: ['wiredep']
+      //},
+      //js: {
+      //  files: ['<%= yeoman.app %>/{,*/}*.js'],
+      //  tasks: [''],
+      //  options: {
+      //    livereload: '<%= connect.options.livereload %>'
+      //  }
+      //},
+      //jsTest: {
+      //  files: ['test/spec/{,*/}*.js'],
+      //  tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
+      //},
+      //styles: {
+      //  files: ['<%= yeoman.app %>/assets/styles/{,*/}*.css'],
+      //  tasks: ['newer:copy:styles', 'postcss']
+      //},
+      //gruntfile: {
+      //  files: ['Gruntfile.js']
+      //},
+      livereload: {
         options: {
-          port: 9000,
-          // Change this to '0.0.0.0' to access the server from outside.
-          hostname: 'localhost',
-          livereload: 35729
+          livereload: '<%= connect.options.livereload %>'
         },
-        //livereload: {
-        //  options: {
-        //    open: true,
-        //    middleware: function (connect) {
-        //      return [
-        //        connect.static('.tmp'),
-        //        connect().use(
-        //          '/bower_components',
-        //          connect.static('./bower_components')
-        //        ),
-        //        connect().use(
-        //          '/app/styles',
-        //          connect.static('./app/styles')
-        //        ),
-        //        connect.static(appConfig.app)
-        //      ];
-        //    }
-        //  }
-        //},
-        //test: {
-        //  options: {
-        //    port: 9001,
-        //    middleware: function (connect) {
-        //      return [
-        //        connect.static('.tmp'),
-        //        connect.static('test'),
-        //        connect().use(
-        //          '/bower_components',
-        //          connect.static('./bower_components')
-        //        ),
-        //        connect.static(appConfig.app)
-        //      ];
-        //    }
-        //  }
-        //},
-        dist: {
-          options: {
-            open: true,
-            base: '<%= yeoman.dist %>'
-          }
+        files: [
+          '<%= yeoman.dist %>/**/*'
+        ]
+      }
+    },
+
+    // The actual grunt server settings
+    connect: {
+      options: {
+        port: 9000,
+        // Change this to '0.0.0.0' to access the server from outside.
+        hostname: 'localhost',
+        livereload: 35729
+      },
+      livereload: {
+        options: {
+          open: true//,
+          //middleware: function (connect) {
+          //  return [
+          //    connect.static('.tmp'),
+          //    connect().use(
+          //      '/bower_components',
+          //      connect.static('./bower_components')
+          //    ),
+          //    connect().use(
+          //      '/app/styles',
+          //      connect.static('./app/styles')
+          //    ),
+          //    connect.static(appConfig.app)
+          //  ];
+          //}
         }
       },
+      //test: {
+      //  options: {
+      //    port: 9001,
+      //    middleware: function (connect) {
+      //      return [
+      //        connect.static('.tmp'),
+      //        connect.static('test'),
+      //        connect().use(
+      //          '/bower_components',
+      //          connect.static('./bower_components')
+      //        ),
+      //        connect.static(appConfig.app)
+      //      ];
+      //    }
+      //  }
+      //},
+      dist: {
+        options: {
+          open: true,
+          base: '<%= yeoman.dist %>'
+        }
+      }
+    },
     //
     //  // Make sure there are no obvious mistakes
     //  jshint: {
@@ -372,7 +371,8 @@ module.exports = function (grunt) {
               'root/{,*/}*.html',
               'root/{,*/}*.js',
               'app.js',
-              'assets/{,*/}*.*'
+              'assets/{,*/}*.*',
+              'components/**/*'
             ]
           }//,
           //{
@@ -417,19 +417,20 @@ module.exports = function (grunt) {
   //
   //
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+    console.log(target);
     //if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    //  return grunt.task.run(['build', 'connect:dist:keepalive']);
     //}
     //grunt.log.warn(target);
     //grunt.log.warn('Targets other than dist not supported!');
-    //grunt.task.run([
-    //  'clean:server',
-    //  'wiredep',
-    //  'concurrent:server',
-    //  'postcss:server',
-    //  'connect:livereload',
-    //  'watch'
-    //]);
+    grunt.task.run([
+      //'clean:server',
+      //'wiredep',
+      //'concurrent:server',
+      //'postcss:server',
+      'connect:livereload',
+      'watch'
+    ]);
   });
   //
   //grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {

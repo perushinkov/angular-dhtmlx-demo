@@ -1,14 +1,18 @@
 <dhx-layout
+  style="margin:0 auto;"
+
   dhx-layout-code="3L"
-  dhx-width="80"
-  dhx-height="39"
+  dhx-width="60"
+  dhx-height="30"
   dhx-use-ems="true">
   <dhx-layout-pane
-    dhx-text="Pane A"
-    dhx-collapsed-text="Pane A collapsed"
-    dhx-header="true"
+    dhx-text="Dhtmlx components"
     >
-    <input type="text" ng-model="msg">
+    <dhx-tree
+      dhx-enable-check-boxes="false"
+      dhx-enable-highlighting="true"
+      dhx-json-data="cmpTreeData"
+      ></dhx-tree>
   </dhx-layout-pane>
   <dhx-layout-pane
     dhx-text="Pane B"

@@ -12,14 +12,15 @@
     <!-- endbower -->
 
   </head>
-  <body ng-app="myApp" style="margin:0px;" ng-controller="AppController">
+  <body ng-app="myApp" style="margin:0;" ng-controller="AppController">
 
   <div class="headerTitle">
     <h1>DHTMLX Wrappers for Angular.js (demo)</h1>
   </div>
 
-  <div ui-view></div>
-  <div id="specialDiv" style="width: 800px; height: 400px;"></div>
+  <div class="content">
+    <div ui-view></div>
+  </div>
   <!-- bower:js -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/dhtmlx/dhtmlx.js"></script>
@@ -31,6 +32,7 @@
   <script src="root/root.js"></script>
 
   <script src="components/dhtmlx/directives/layout.js"></script>
+  <script src="components/dhtmlx/directives/tree.js"></script>
 
   </body>
 </html>

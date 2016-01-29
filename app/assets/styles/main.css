@@ -5,13 +5,16 @@ body {
   background: url("../images/gradient.png") repeat;
   display: inline-block;
   width: 100%;
-  text-align: center;
 }
 .headerTitle h1 {
   display: inline-block;
   color: #C1BEFF;
   padding: 0.3em;
-  margin: 0px;
-  font-family: Consolas;
+  margin: 0;
+  font-family: Consolas, monospace;
   font-weight: bold;
+}
+
+.content {
+  padding: 1em;
 }

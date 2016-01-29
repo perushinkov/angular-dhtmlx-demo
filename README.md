@@ -10,7 +10,17 @@ Completed:
     <ul>
       <li> 
         <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/root.html">
-          ExampleUse
+          ExampleUse (together wih dhxTree)
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/tree.js">dhtmlxTree</a>
+    <ul>
+      <li> 
+        <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/root.html">
+          ExampleUse (together wih dhxLayout)
         </a>
       </li>
     </ul>

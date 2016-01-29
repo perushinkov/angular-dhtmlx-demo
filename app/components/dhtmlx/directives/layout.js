@@ -9,6 +9,16 @@
 angular.module('dhxDirectives')
   .directive('dhxLayout', function factory() {
     var letters = "abcdefg";
+
+    var getNextId = (function () {
+      var letters = "abcdefg";
+      var current = -1;
+      return function () {
+        current++;
+        return letters[current];
+      };
+    })();
+
     return {
       restrict: 'E',
       require: 'dhxLayout',
@@ -17,18 +27,12 @@ angular.module('dhxDirectives')
         this.registerPane = function (pane) {
           $scope.panes.push(pane);
         };
-
-        this.getNextId = (function () {
-          var letters = "abcdefg";
-          var current = -1;
-          return function () {
-            current++;
-            return letters[current];
-          };
-        })();
       },
       scope: {
-        dhxLayoutCode: "@"
+        dhxLayoutCode: "@",
+        dhxWidth: "=", // Mandatory.
+        dhxHeight: "=", // Mandatory.
+        dhxUseEms: "=" // Optional... If width and height is in ems. Px is default;
       },
       compile: function compile(tElement, tAttrs, transclude) {
         console.log('Compile ' + tAttrs.dhxLayoutCode);
@@ -39,37 +43,34 @@ angular.module('dhxDirectives')
           console.log(element);
           console.log(scope);
 
-          element.css('width', '800px');
-          element.css('height', '400px');
+          var dim = (scope.dhxUseEms ? 'em' : 'px');
+          element.css('width', scope.dhxWidth + dim);
+          element.css('height', scope.dhxHeight + dim);
 
-          element.css('display', 'block');
+          element.css('display', 'block'); // Mandatory
 
-          var layout = new dhtmlXLayoutObject(
-            element[0],
-            //'someOddId',
-            scope.dhxLayoutCode
-          //  {
-          //  parent: element[0],
-          //  pattern: attrs.dhxLayoutCode,
-          //  offsets: {
-          //    top: 10,
-          //    right: 10,
-          //    bottom: 10,
-          //    left: 10
-          //  }//,
-          //  //cells: scope
-          //  //  .panes
-          //  //  .map(function (paneObj) {
-          //  //    paneObj.cellConfig.id = ctrl.getNextId();
-          //  //    return paneObj.cellConfig;
-          //  //  }
-          //  //)
-          //}
+          var layout = new dhtmlXLayoutObject({
+              parent: element[0],
+              pattern: scope.dhxLayoutCode,
+              //offsets: { //TODO: Add them as optionals
+              //  top: 10,
+              //  right: 10,
+              //  bottom: 10,
+              //  left: 10
+              //},
+              cells: scope
+                .panes
+                .map(function (paneObj) {
+                  paneObj.cellConfig.id = getNextId();
+                  console.log(paneObj.cellConfig);
+                  return paneObj.cellConfig;
+                })
+            }
           );
 
           for (var i = 0; i < scope.panes.length; i++) {
             layout.cells(letters[i]).appendObject(scope.panes[i].jqElem[0]);
-           }
+          }
         }
       }
     };
@@ -77,30 +78,27 @@ angular.module('dhxDirectives')
   .directive('dhxLayoutPane', function factory() {
     return {
       restrict: 'E',
-      require: ['^dhxLayout'/*, 'dhxLayoutPane'*/],
-      //controller: function() {
-      //},
+      require: '^dhxLayout',
       scope: {
         dhxText: '@',
-        dhxCollapsedText: '@',
-        dhxHeader: '@',
-        dhxWidth: '@',
-        dhxHeight: '@',
-        dhxCollapse: '@',
+        dhxCollapsedText: '@', // If this is omitted it becomes dhxText
+        dhxHeader: '=', // Expression... since it is a boolean value
+        dhxWidth: '@',  // These are optional... However when specified they
+        dhxHeight: '@', // should not conflict with the layout width and height
+        dhxCollapse: '=', // Expression... since it is a boolean value
         dhxFixSize: '@'
       },
       compile: function compile(tElement, tAttrs, transclude) {
-        return function (scope, element, attrs, ctrls) {
-          var layoutCtrl = ctrls[0];
+        return function (scope, element, attrs, layoutCtrl) {
           layoutCtrl.registerPane({
             jqElem: element.detach(),
             cellConfig: {
               text: scope.dhxText || "",
-              collapsed_text: scope.dhxCollapsedHeaderText || scope.dhxHeaderText || "",
-              header: !!scope.dhxHeader,
+              collapsed_text: scope.dhxCollapsedText || scope.dhxText || "",
+              header: scope.dhxHeader,
               width: scope.dhxWidth,
               height: scope.dhxHeight,
-              collapse: !!scope.dhxCollapse,
+              collapse: scope.dhxCollapse == undefined ? false : true,
               fix_size: scope.dhxFixSize
             }
           });

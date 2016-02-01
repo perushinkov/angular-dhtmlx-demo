@@ -8,25 +8,22 @@
  * The layout initialization API used below can be seen here:
  * http://docs.dhtmlx.com/layout__init.html
  */
-//angular.element($0).scope() in console!
 angular.module('dhxDirectives')
   .directive('dhxLayout', function factory() {
     var letters = "abcdefg";
-
-    var getNextId = (function () {
-      var letters = "abcdefg";
-      var current = -1;
-      return function () {
-        current++;
-        return letters[current];
-      };
-    })();
-
     return {
       restrict: 'E',
       require: 'dhxLayout',
       controller: function ($scope) {
         $scope.panes = [];
+        this.getNextId = (function () {
+          var letters = "abcdefg";
+          var current = -1;
+          return function () {
+            current++;
+            return letters[current];
+          };
+        })();
         this.registerPane = function (pane) {
           $scope.panes.push(pane);
         };
@@ -37,11 +34,7 @@ angular.module('dhxDirectives')
         dhxHeight: "=", // Mandatory.
         dhxUseEms: "=" // Optional... If width and height is in ems. Px is default;
       },
-      link: function (scope, element, attrs) {
-        console.log('Link ' + attrs.dhxLayoutCode);
-        console.log(element);
-        console.log(scope);
-
+      link: function (scope, element, attrs, layoutCtrl) {
         var dim = (scope.dhxUseEms ? 'em' : 'px');
         element.css('width', scope.dhxWidth + dim);
         element.css('height', scope.dhxHeight + dim);
@@ -61,8 +54,7 @@ angular.module('dhxDirectives')
             cells: scope
               .panes
               .map(function (paneObj) {
-                paneObj.cellConfig.id = getNextId();
-                console.log(paneObj.cellConfig);
+                paneObj.cellConfig.id = layoutCtrl.getNextId();
                 return paneObj.cellConfig;
               })
           }

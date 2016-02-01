@@ -7,6 +7,7 @@
   dhx-use-ems="true">
   <dhx-layout-pane
     dhx-text="Dhtmlx components"
+    dhx-width="150"
     >
     <dhx-tree
       dhx-tree="dhxTree"
@@ -19,15 +20,16 @@
       ></dhx-tree>
   </dhx-layout-pane>
   <dhx-layout-pane
-    dhx-text="Pane B"
+    dhx-text="Demonstration"
     dhx-collapsed-text="Pane B collapsed"
-    dhx-header="false"
-    dhx-height="150"
+    dhx-height="180"
     >
-    <div ui-view="demo"></div>
+    <div style="padding:10px;">
+      <div ui-view="demo"></div>
+    </div>
   </dhx-layout-pane>
   <dhx-layout-pane
-    dhx-text="Pane C"
+    dhx-text="Use in templates + code"
     dhx-collapsed-text="Pane C collapsed"
     dhx-header="true"
     >

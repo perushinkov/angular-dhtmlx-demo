@@ -1,0 +1,163 @@
+<div style="padding:10px;">
+  <p>Usage (in template):</p>
+  <pre class="code">
+  &lt;dhx-tree
+    dhx-tree=&quot;dhxTree&quot;
+    dhx-enable-check-boxes=&quot;true&quot;
+    dhx-enable-tree-images=&quot;true&quot;
+    dhx-enable-highlighting=&quot;true&quot;
+    dhx-json-data=&quot;treeData&quot;
+    dhx-on-data-loaded=&quot;treeDataLoaded&quot;
+    dhx-handlers=&quot;treeHandlers&quot;
+    &gt;&lt;/dhx-tree&gt;
+</pre>
+  <p>Usage (in controller):</p>
+  <pre class="code">
+  &quot;use strict&quot;;
+  /**
+   * Created by Emanuil on 01/02/2016.
+   */
+  angular.module('myApp')
+    .controller('TreeController', ['$scope', function ($scope) {
+      $scope.treeData = {
+        &quot;id&quot;: 0,
+        &quot;item&quot;: [
+          {
+            &quot;id&quot;: &quot;dataCmps&quot;,
+            &quot;text&quot;: &quot;Data&quot;,
+            &quot;item&quot;: [
+              {
+                &quot;id&quot;: &quot;Grid&quot;,
+                &quot;text&quot;: &quot;Grid&quot;
+              },
+              {
+                &quot;id&quot;: &quot;Tree&quot;,
+                &quot;text&quot;: &quot;Tree&quot;
+              }
+            ]
+          },
+          {
+            &quot;id&quot;: &quot;Windows&quot;,
+            &quot;text&quot;: &quot;Windows&quot;
+          },
+          {
+            &quot;id&quot;: &quot;Layout&quot;,
+            &quot;text&quot;: &quot;Layout&quot;
+          }
+        ]
+      };
+
+      $scope.treeDataLoaded = function (tree) {
+        console.log('Data has been loaded!');
+      };
+
+      $scope.treeHandlers = [
+        {
+          type: &quot;onClick&quot;,
+          handler: function (id) {
+            console.log('You have clicked \'' + id + '\'');
+          }
+        }
+      ];
+    }]);
+</pre>
+  <p>Directives code</p>
+
+<pre class="code">
+  &quot;use strict&quot;;
+  /**
+   * Created by Emanuil on 29/01/2016.
+   *
+   * It is hard to exhaust the complete dhtmlxTree API here...
+   * so feel free to adapt to your own needs.
+   *
+   * By binding the tree object itself to the controller scope,
+   * and adding a configureFunc scope callback before data parse
+   * I have tried to provide full access to the dhtmlxTree functionality
+   */
+  angular.module('dhxDirectives')
+    .directive('dhxTree', function factory() {
+      return {
+        restrict: 'E',
+        require: 'dhxTree',
+        controller: function () {
+        },
+        scope: {
+          /**
+           * Tree will be accessible in controller via this scope entry
+           * after it's initialized
+           */
+          dhxTree: '=',
+          /**
+           * Please refer to the following link for format:
+           * http://docs.dhtmlx.com/tree__syntax_templates.html#jsonformattemplate
+           */
+          dhxJsonData: '=',
+          /**
+           * [{type: &lt;handlerType&gt;, handler: &lt;handlerFunc&gt;}]
+           * where type is 'onSomeEvent'
+           * Events can be seen at: http://docs.dhtmlx.com/api__refs__dhtmlxtree_events.html
+           * Optional
+           */
+          dhxHandlers: '=',
+          /**
+           * Not an exhaustive list of enablers... feel free to add more.
+           * Optionals!
+           */
+          dhxEnableCheckBoxes: '=',
+          dhxEnableDragAndDrop: '=',
+          dhxEnableHighlighting: '=',
+          dhxEnableThreeStateCheckboxes: '=',
+          dhxEnableTreeLines: '=',
+          dhxEnableTreeImages: '=',
+          /**
+           * preLoad and postLoad callbacks to controller for additional
+           * customization power.
+           */
+          dhxConfigureFunc: '=',
+          dhxOnDataLoaded: '='
+        },
+        link: function (scope, element/*, attrs, treeCtrl*/) {
+          //noinspection JSPotentiallyInvalidConstructorUsage
+          var tree = new dhtmlXTreeObject({
+            parent: element[0],
+            skin: &quot;dhx_skyblue&quot;,
+            checkbox: true,
+            image_path: &quot;bower_components/dhtmlx/imgs/dhxtree_skyblue/&quot;
+          });
+
+          scope.dhxTree = tree;
+
+          // Attaching event handlers
+          scope.dhxHandlers = scope.dhxHandlers || [];
+          var info;
+          for (var i = 0; i &lt; scope.dhxHandlers.length; i++) {
+            info = scope.dhxHandlers[i];
+            tree.attachEvent(info.type, info.handler);
+          }
+
+          // Additional optional configuration
+          tree.enableCheckBoxes(scope.dhxEnableCheckBoxes);
+          tree.enableDragAndDrop(scope.dhxEnableDragAndDrop);
+          tree.enableHighlighting(scope.dhxEnableHighlighting);
+          tree.enableThreeStateCheckboxes(scope.dhxEnableThreeStateCheckboxes);
+          tree.enableTreeImages(scope.dhxEnableTreeImages);
+          tree.enableTreeLines(scope.dhxEnableTreeLines);
+
+          // Letting controller add configurations before data is parsed
+          if (scope.dhxConfigureFunc) {
+            scope.dhxConfigureFunc(tree);
+          }
+
+          // Finally parsing data
+          tree.parse(scope.dhxJsonData, &quot;json&quot;);
+
+          // Letting controller do data manipulation after data has been loaded
+          if (scope.dhxOnDataLoaded) {
+            scope.dhxOnDataLoaded(tree);
+          }
+        }
+      };
+    });
+</pre>
+</div>

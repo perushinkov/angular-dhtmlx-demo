@@ -16,7 +16,6 @@ angular.module('myApp')
         leafs.forEach(function (leaf) {
           tree.setItemStyle(leaf, style);
         });
-        console.log(leafs);
       };
 
       $scope.treeHandlers = [
@@ -24,7 +23,6 @@ angular.module('myApp')
           type: "onClick",
           handler: function (id) {
             if ($scope.dhxTree.hasChildren(id) == 0) {
-              console.log('cmp' + id);
               $state.go('cmp' + id);
             }
           }

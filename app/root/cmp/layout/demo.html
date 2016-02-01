@@ -1,0 +1,29 @@
+<dhx-layout
+  dhx-layout-code="3L"
+  dhx-width="40"
+  dhx-height="8"
+  dhx-use-ems="true">
+  <dhx-layout-pane
+    dhx-text="Pane A">
+    <div style="padding:10px;">
+      <label>
+        Test data-binding
+        <input type="text" ng-model="someText">
+      </label>
+    </div>
+
+  </dhx-layout-pane>
+  <dhx-layout-pane
+    dhx-text="Pane B"
+    dhx-collapsed-text="Pane B collapsed"
+    dhx-header="false">
+    <p>You've just input {{someText}}</p>
+
+  </dhx-layout-pane>
+  <dhx-layout-pane
+    dhx-text="Pane C"
+    dhx-collapsed-text="Pane C collapsed"
+    dhx-header="true">
+    Some other arbitrary content!
+  </dhx-layout-pane>
+</dhx-layout>

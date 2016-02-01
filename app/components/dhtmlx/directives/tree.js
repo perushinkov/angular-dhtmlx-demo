@@ -28,8 +28,9 @@ angular.module('dhxDirectives')
          */
         dhxJsonData: '=',
         /**
-         * [{type: <handlerType>, listener: <handlerFunc>}]
+         * [{type: <handlerType>, handler: <handlerFunc>}]
          * where type is 'onSomeEvent'
+         * Events can be seen at: http://docs.dhtmlx.com/api__refs__dhtmlxtree_events.html
          * Optional
          */
         dhxHandlers: '=',
@@ -42,7 +43,13 @@ angular.module('dhxDirectives')
         dhxEnableHighlighting: '=',
         dhxEnableThreeStateCheckboxes: '=',
         dhxEnableTreeLines: '=',
-        dhxConfigureFunc: '='
+        dhxEnableTreeImages: '=',
+        /**
+         * preLoad and postLoad callbacks to controller for additional
+         * customization power.
+         */
+        dhxConfigureFunc: '=',
+        dhxOnDataLoaded: '='
       },
       link: function (scope, element/*, attrs, treeCtrl*/) {
         //noinspection JSPotentiallyInvalidConstructorUsage
@@ -68,15 +75,21 @@ angular.module('dhxDirectives')
         tree.enableDragAndDrop(scope.dhxEnableDragAndDrop);
         tree.enableHighlighting(scope.dhxEnableHighlighting);
         tree.enableThreeStateCheckboxes(scope.dhxEnableThreeStateCheckboxes);
+        tree.enableTreeImages(scope.dhxEnableTreeImages);
         tree.enableTreeLines(scope.dhxEnableTreeLines);
 
-        // Letting controller
+        // Letting controller add configurations before data is parsed
         if (scope.dhxConfigureFunc) {
           scope.dhxConfigureFunc(tree);
         }
 
         // Finally parsing data
         tree.parse(scope.dhxJsonData, "json");
+
+        // Letting controller do data manipulation after data has been loaded
+        if (scope.dhxOnDataLoaded) {
+          scope.dhxOnDataLoaded(tree);
+        }
       }
     };
   });

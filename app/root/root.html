@@ -9,9 +9,13 @@
     dhx-text="Dhtmlx components"
     >
     <dhx-tree
+      dhx-tree="dhxTree"
       dhx-enable-check-boxes="false"
       dhx-enable-highlighting="true"
       dhx-json-data="cmpTreeData"
+      dhx-enable-tree-images="false"
+      dhx-on-data-loaded="treeDataLoaded"
+      dhx-handlers="treeHandlers"
       ></dhx-tree>
   </dhx-layout-pane>
   <dhx-layout-pane
@@ -20,14 +24,14 @@
     dhx-header="false"
     dhx-height="150"
     >
-    B, here! {{msg}}
+    <div ui-view="demo"></div>
   </dhx-layout-pane>
   <dhx-layout-pane
     dhx-text="Pane C"
     dhx-collapsed-text="Pane C collapsed"
     dhx-header="true"
     >
-    C, here!
+    <div ui-view="docs"></div>
   </dhx-layout-pane>
 </dhx-layout>
 

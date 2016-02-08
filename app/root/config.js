@@ -16,18 +16,18 @@ angular.module('myApp')
       // FORM CMP
       , 'cmpCombo', 'cmpCalendar', 'cmpColorPicker', 'cmpSlider', 'cmpForm'
       // NOTIFICATIONS
-      , 'cmpPopup', 'cmpMessage'
     ];
 
     var readySubstates = [
       //DATA
-      'cmpGrid', 'cmpTree',
+      'cmpGrid', 'cmpTree'
       // LAYOUT
-      'cmpLayout'
+      , 'cmpLayout'
       // NAVIGATION
       // NAV & LAYOUT
       // FORM CMP
       // NOTIFICATIONS
+      , 'cmpPopup'//, 'cmpMessage'
     ];
 
     var todoStateViews = {

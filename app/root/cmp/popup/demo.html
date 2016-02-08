@@ -1,0 +1,14 @@
+<!--
+  a span element is used because dhx-popup centers around parent.
+  thus it will center around the text input
+-->
+
+<grouper>
+  <dhx-popup
+    dhx-show="msg != 'John'"
+    dhx-refresh="msg">
+    Please type in &#39;John&#39;, not &#39;{{msg}}&#39;!
+  </dhx-popup>
+  <input type="text" ng-model="msg">
+</grouper>
+

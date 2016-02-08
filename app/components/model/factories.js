@@ -67,7 +67,7 @@ angular.module('myApp').factory('Model', [function () {
               "text": "Layout"
             }
           ]
-        }//,
+        },
         //{
         //  "id": "navCmps",
         //  "text": "Navigation",
@@ -122,20 +122,20 @@ angular.module('myApp').factory('Model', [function () {
         //    }
         //  ]
         //},
-        //{
-        //  "id": "notifyCmps",
-        //  "text": "Notifications",
-        //  "item": [
-        //    {
-        //      "id": "Popup",
-        //      "text": "Popup"
-        //    },
-        //    {
-        //      "id": "Message",
-        //      "text": "Message"
-        //    }
-        //  ]
-        //}
+        {
+          "id": "notifyCmps",
+          "text": "Notifications",
+          "item": [
+            {
+              "id": "Popup",
+              "text": "Popup"
+            }//,
+            //{
+            //  "id": "Message",
+            //  "text": "Message"
+            //}
+          ]
+        }
       ]
     };
   };

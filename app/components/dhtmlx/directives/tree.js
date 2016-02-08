@@ -10,7 +10,7 @@
  * I have tried to provide full access to the dhtmlxTree functionality
  */
 angular.module('dhxDirectives')
-  .directive('dhxTree', function factory() {
+  .directive('dhxTree', function factory(DhxUtils) {
     return {
       restrict: 'E',
       require: 'dhxTree',
@@ -57,18 +57,12 @@ angular.module('dhxDirectives')
           parent: element[0],
           skin: "dhx_skyblue",
           checkbox: true,
-          image_path: "bower_components/dhtmlx/imgs/dhxtree_skyblue/"
+          image_path: DhxUtils.getImagePath()
         });
 
         scope.dhxTree = tree;
 
-        // Attaching event handlers
-        scope.dhxHandlers = scope.dhxHandlers || [];
-        var info;
-        for (var i = 0; i < scope.dhxHandlers.length; i++) {
-          info = scope.dhxHandlers[i];
-          tree.attachEvent(info.type, info.handler);
-        }
+        DhxUtils.attachDhxHandlers(tree, scope.dhxHandlers);
 
         // Additional optional configuration
         tree.enableCheckBoxes(scope.dhxEnableCheckBoxes);

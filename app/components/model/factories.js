@@ -12,10 +12,10 @@ angular.module('myApp').factory('Model', [function () {
           "id": "dataCmps",
           "text": "Data",
           "item": [
-            //{
-            //  "id": "Grid",
-            //  "text": "Grid"
-            //},
+            {
+              "id": "Grid",
+              "text": "Grid"
+            },
             //{
             //  "id": "TreeGrid",
             //  "text": "TreeGrid"
@@ -27,6 +27,10 @@ angular.module('myApp').factory('Model', [function () {
             //{
             //  "id": "DataView",
             //  "text": "DataView"
+            //},
+            //{
+            //  "id": "List", // Note: Does not exist in current version
+            //  "text": "List"
             //},
             //{
             //  "id": "Editor",

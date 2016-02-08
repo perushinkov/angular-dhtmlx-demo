@@ -6,7 +6,7 @@ angular.module('myApp')
   .config(function ($stateProvider) {
     var todoSubstates = [
       //DATA
-      'cmpGrid', 'cmpTreeGrid', 'cmpDataView', 'cmpEditor', 'cmpCarousel', 'cmpChart'
+      'cmpTreeGrid', 'cmpDataView', 'cmpEditor', 'cmpCarousel', 'cmpChart'
       // LAYOUT
       , 'cmpTabbar', 'cmpWindows', 'cmpAccordion'
       // NAVIGATION
@@ -21,7 +21,7 @@ angular.module('myApp')
 
     var readySubstates = [
       //DATA
-      'cmpTree',
+      'cmpGrid', 'cmpTree',
       // LAYOUT
       'cmpLayout'
       // NAVIGATION

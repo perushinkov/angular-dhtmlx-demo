@@ -4,10 +4,11 @@
   "dependencies": {
     "angular": "^1.4.0",
     "dhtmlx": "~4.5.1",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "jquery": "~2.2.0"
   },
-  "overrides" : {
-    "dhtmlx" : ""
+  "overrides": {
+    "dhtmlx": ""
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

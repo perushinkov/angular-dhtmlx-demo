@@ -20,8 +20,22 @@ angular.module('dhxDirectives')
     var getImagePath = function () {
       return _imgPath;
     };
+
+    /**
+     * I hope to never resort to using that
+     */
+    var nextDhxId = (function () {
+      var _uniqueIdCtr = -1;
+      var somePrefix = 'perushinkov_dhx_id_';
+      return function () {
+        _uniqueIdCtr++;
+        return somePrefix + _uniqueIdCtr;
+      };
+    })();
+
     return {
       attachDhxHandlers: attachDhxHandlers,
-      getImagePath: getImagePath
+      getImagePath: getImagePath,
+      nextDhxId: nextDhxId
     };
   }]);

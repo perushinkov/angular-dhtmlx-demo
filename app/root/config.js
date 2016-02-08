@@ -63,7 +63,8 @@ angular.module('myApp')
               controller: smallName[0].toUpperCase() + smallName.substring(1) + 'Controller'
             },
             'docs': {
-              templateUrl: 'root/cmp/' + smallName + '/docs.html'
+              templateUrl: 'root/todo/docs.html',
+              controller: 'DemoController'
             }
           }
         });

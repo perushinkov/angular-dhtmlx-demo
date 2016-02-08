@@ -13,15 +13,20 @@ angular.module('dhxDirectives', []);
 angular
   .module('myApp', [
     'ui.router',
-    'dhxDirectives'
+    'dhxDirectives',
+    'hljs'
   ])
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, hljsServiceProvider) {
     $stateProvider
       .state('root', {
         url: "/",
         templateUrl: "root/root.html",
         controller : 'RootController'
-      })
+      });
+
+    hljsServiceProvider.setOptions({
+      tabReplace: '  '
+    });
   })
   .controller('AppController', ['$state' ,function ($state) {
     $state.go('root');

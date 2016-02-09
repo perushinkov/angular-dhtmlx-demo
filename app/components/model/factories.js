@@ -23,7 +23,7 @@ angular.module('myApp').factory('Model', [function () {
             {
               "id": "Tree",
               "text": "Tree"
-            }//,
+            },
             //{
             //  "id": "DataView",
             //  "text": "DataView"
@@ -40,10 +40,10 @@ angular.module('myApp').factory('Model', [function () {
             //  "id": "Carousel",
             //  "text": "Carousel"
             //},
-            //{
-            //  "id": "Chart",
-            //  "text": "Chart"
-            //}
+            {
+              "id": "Chart",
+              "text": "Chart"
+            }
           ]
         },
         {

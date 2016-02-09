@@ -1,0 +1,64 @@
+"use strict";
+/**
+ * Created by Emanuil on 09/02/2016.
+ */
+angular.module('dhxDirectives')
+  .directive('dhxMessage', function factory() {
+    return {
+      restrict: 'E',
+      require: 'dhxMessage',
+      controller: function () {
+      },
+      scope: {
+        // shared props for notifications, confirms and alerts
+        dhxInvoker: '=',
+        dhxId: '@',
+        dhxText: '@',
+        /**
+         * alert, alert-warning, alert-error,
+         * confirm, confirm-warning, confirm-error,
+         * ...anything else
+         */
+        dhxType: '@',
+        // For notifications(a.k.a. plain messages)
+        dhxExpire: '=',
+        // shared props for confirms and alerts
+        dhxCallback: '=',
+        dhxHeight: '=',
+        dhxWidth: '=',
+        dhxPosition: '@',
+        dhxTitle: '@',
+        dhxOk: '@',
+        // Just for Confirm
+        dhxCancel: '@'
+      },
+      link: function (scope, element, attrs) {
+        scope.dhxInvoker = function () {
+          var instObj = {};
+
+          // Not bothering with checks. Relying on the user providing just the data that's
+          // needed for the message type
+          scope.dhxId !== undefined ? instObj.id = scope.dhxId : '';
+          scope.dhxText !== undefined ? instObj.text = scope.dhxText : '';
+          scope.dhxType !== undefined ? instObj.type = scope.dhxType : '';
+          scope.dhxExpire !== undefined ? instObj.expire = scope.dhxExpire : '';
+          scope.dhxHeight !== undefined ? instObj.height = scope.dhxHeight : '';
+          scope.dhxWidth !== undefined ? instObj.width = scope.dhxWidth : '';
+          scope.dhxPosition !== undefined ? instObj.position = scope.dhxPosition : '';
+          scope.dhxTitle !== undefined ? instObj.title = scope.dhxTitle : '';
+          scope.dhxOk !== undefined ? instObj.ok = scope.dhxOk : '';
+          scope.dhxCancel !== undefined ? instObj.cancel = scope.dhxCancel : '';
+
+          if (scope.dhxCallback !== undefined) {
+            instObj.callback = function (data) {
+              scope.dhxCallback(data);
+            };
+          }
+
+          dhtmlx.message(instObj);
+        };
+      }
+    };
+  });
+
+

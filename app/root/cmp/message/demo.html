@@ -1,0 +1,28 @@
+<button ng-click="f1();" >Show alert!</button>
+
+<dhx-message
+  dhx-callback="f2"
+  dhx-invoker="f1"
+  dhx-type="alert-warning"
+  dhx-ok="Show "
+  dhx-title="Show confirm!"
+  dhx-text="An alert!"
+  />
+
+<dhx-message
+  dhx-callback="f3"
+  dhx-invoker="f2"
+  dhx-type="confirm-warning"
+  dhx-ok="Show message!"
+  dhx-cancel="Show message :)"
+  dhx-title="Test confirmbox"
+  dhx-text="A confirm!"
+  />
+
+<dhx-message
+  dhx-invoker="f3"
+  dhx-title="Test message"
+  dhx-expire="5000"
+  dhx-text="This is a notification that lasts 5000ms!"
+  />
+

@@ -27,7 +27,7 @@ angular.module('myApp')
       // NAV & LAYOUT
       // FORM CMP
       // NOTIFICATIONS
-      , 'cmpPopup'//, 'cmpMessage'
+      , 'cmpPopup', 'cmpMessage'
     ];
 
     var todoStateViews = {

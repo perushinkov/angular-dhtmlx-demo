@@ -129,11 +129,11 @@ angular.module('myApp').factory('Model', [function () {
             {
               "id": "Popup",
               "text": "Popup"
-            }//,
-            //{
-            //  "id": "Message",
-            //  "text": "Message"
-            //}
+            },
+            {
+              "id": "Message",
+              "text": "Message"
+            }
           ]
         }
       ]

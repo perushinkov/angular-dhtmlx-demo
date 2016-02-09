@@ -52,7 +52,7 @@ I am new to grunt, and overall a recent fan of Angular.js, so feel free to point
     <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/message.js">dhtmlXMessage</a>
     <ul>
       <li>
-        <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/cmp/popup">
+        <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/cmp/message">
           Example use (Alert/Confirm and just message)
         </a>
       </li>

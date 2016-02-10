@@ -60,50 +60,65 @@ angular.module('dhxDirectives')
          * Events can be seen at: http://docs.dhtmlx.com/api__refs__dhtmlxgrid_events.html
          * Optional
          */
-        dhxHandlers: '='
+        dhxHandlers: '=',
+        dhxVersionId: '='
       },
       compile: function compile(tElement, tAttrs, transclude) {
         return function (scope, element, attrs) {
+          var loadStructure = function () {
+            $(element).empty();
+            $('<div></div>').appendTo(element[0]);
+            var rootElem = element.children().first();
 
-          $('<div></div>').appendTo(element[0]);
-          var rootElem = element.children().first();
-          //noinspection JSPotentiallyInvalidConstructorUsage
-          var grid = new dhtmlXGridObject(rootElem[0]);
-          grid.setImagePath(DhxUtils.getImagePath());
+            var width = scope.dhxMaxWidth ? (scope.dhxMaxWidth + 'px') : '100%';
+            var height = scope.dhxMaxHeight ? (scope.dhxMaxHeight + 'px') : '100%';
+            rootElem.css('max-width', width);
+            rootElem.css('width', width);
+            rootElem.css('height', height);
+            rootElem.css('max-height', height);
 
-          grid.enableAutoHeight(!!scope.dhxMaxHeight, scope.dhxMaxHeight, true);
-          grid.enableAutoWidth(!!scope.dhxMaxWidth, scope.dhxMaxWidth, true);
+            //noinspection JSPotentiallyInvalidConstructorUsage
+            var grid = new dhtmlXGridObject(rootElem[0]);
+            grid.setImagePath(DhxUtils.getImagePath());
 
-          scope.dhxHeader ? grid.setHeader(scope.dhxHeader): '';
-          scope.dhxColTypes ? grid.setColTypes(scope.dhxColTypes): '';
-          scope.dhxColSorting ? grid.setColSorting(scope.dhxColSorting): '';
-          scope.dhxColAlign ? grid.setColAlign(scope.dhxColAlign): '';
-          scope.dhxInitWidths ? grid.setInitWidths(scope.dhxInitWidths): '';
-          scope.dhxInitWidthsP ? grid.setInitWidthsP(scope.dhxInitWidthsP): '';
+            grid.enableAutoHeight(!!scope.dhxMaxHeight, scope.dhxMaxHeight, true);
+            grid.enableAutoWidth(!!scope.dhxMaxWidth, scope.dhxMaxWidth, true);
 
-          DhxUtils.attachDhxHandlers(grid, scope.dhxHandlers);
+            scope.dhxHeader ? grid.setHeader(scope.dhxHeader): '';
+            scope.dhxColTypes ? grid.setColTypes(scope.dhxColTypes): '';
+            scope.dhxColSorting ? grid.setColSorting(scope.dhxColSorting): '';
+            scope.dhxColAlign ? grid.setColAlign(scope.dhxColAlign): '';
+            scope.dhxInitWidths ? grid.setInitWidths(scope.dhxInitWidths): '';
+            scope.dhxInitWidthsP ? grid.setInitWidthsP(scope.dhxInitWidthsP): '';
 
-          // Letting controller add configurations before data is parsed
-          if (scope.dhxConfigureFunc) {
-            scope.dhxConfigureFunc(grid);
-          }
+            DhxUtils.attachDhxHandlers(grid, scope.dhxHandlers);
 
-          grid.init();
-          // Finally parsing data
-          scope.dhxDataFormat = scope.dhxDataFormat || 'Basic JSON';
-          switch (scope.dhxDataFormat) {
-            case 'Basic JSON':
-              grid.parse(scope.dhxData, 'json');
-              break;
-            case 'Native JSON':
-              grid.load(scope.dhxData, 'js');
-              break;
-          }
+            // Letting controller add configurations before data is parsed
+            if (scope.dhxConfigureFunc) {
+              scope.dhxConfigureFunc(grid);
+            }
 
-          // Letting controller do data manipulation after data has been loaded
-          if (scope.dhxOnDataLoaded) {
-            scope.dhxOnDataLoaded(grid);
-          }
+            grid.init();
+            // Finally parsing data
+            scope.dhxDataFormat = scope.dhxDataFormat || 'Basic JSON';
+            switch (scope.dhxDataFormat) {
+              case 'Basic JSON':
+                grid.parse(scope.dhxData, 'json');
+                break;
+              case 'Native JSON':
+                grid.load(scope.dhxData, 'js');
+                break;
+            }
+
+            // Letting controller do data manipulation after data has been loaded
+            if (scope.dhxOnDataLoaded) {
+              scope.dhxOnDataLoaded(grid);
+            }
+          };
+          scope.$watch('dhxVersionId', function (newVal, oldVal) {
+            console.log('rebuilding...');
+            loadStructure();
+          });
         }
       }
     };

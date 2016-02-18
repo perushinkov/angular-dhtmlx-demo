@@ -16,16 +16,17 @@ angular.module('dhxDirectives')
         dhxView: '@',
         dhxValue: '@',    //area, bar, line, pie, radar
         dhxXValue: '@',   //scatter
-        dhxYValue: '@'//, //scatter
+        dhxYValue: '@',//, //scatter
         // Optionals //TODO: Might or might not implement later
-        //dhxLabel: '@',
+        dhxLabel: '@',
         //dhxColor: '@',
         //dhxWidth: '=',
-        //dhxTooltip: '@',
+        dhxTooltip: '@',//,
         //dhxXAxis: '=',
         //dhxYAxis: '=',
         //dhxSeries: '=',
         //dhxLegend: '='
+        dhxPieInnerText: '@'
       },
       link: function (scope, element, attrs) {
         //$('<div></div>').appendTo(element[0]);
@@ -47,9 +48,12 @@ angular.module('dhxDirectives')
         }
 
         // Optionals
+
+        scope.dhxLabel ? descriptor.label = scope.dhxLabel : '';
         //scope.dhxColor ? descriptor.color = scope.dhxColor : '';
         //scope.dhxWidth ? descriptor.width = scope.dhxWidth : '';
-        //scope.dhxTooltip ? descriptor.tooltip = scope.dhxTooltip : '';
+        scope.dhxTooltip ? descriptor.tooltip = scope.dhxTooltip : '';
+        scope.dhxPieInnerText ? descriptor.pieInnerText = scope.dhxPieInnerText : '';
         //scope.dhxXAxis ? descriptor.xAxis = scope.dhxXAxis : '';
         //scope.dhxYAxis ? descriptor.yAxis = scope.dhxYAxis : '';
         //scope.dhxSeries ? descriptor.series = scope.dhxSeries : '';

@@ -30,20 +30,37 @@ angular.module('dhxDirectives')
       },
       scope: {
         dhxLayoutCode: "@",
-        dhxWidth: "=", // Mandatory.
+        dhxWidth: "=", // Optional... Default is 100%. If set, use ems or pixels.
         dhxHeight: "=", // Mandatory.
         dhxUseEms: "=" // Optional... If width and height is in ems. Px is default;
       },
       link: function (scope, element, attrs, layoutCtrl) {
-        var dim = (scope.dhxUseEms ? 'em' : 'px');
-        element.css('width', scope.dhxWidth + dim);
-        element.css('height', scope.dhxHeight + dim);
+        $(element).empty();
+        $('<div></div>').appendTo(element[0]);
+        var rootElem = element.children().first();
 
-        element.css('display', 'block'); // Mandatory
+        var dim = (scope.dhxUseEms ? 'em' : 'px');
+        var height = scope.dhxHeight? (scope.dhxHeight + dim) : console.warn('Please set dhx-layout height!');
+        var width = scope.dhxWidth? (scope.dhxWidth + dim) : '100%';
+
+        //rootElem.css('max-width', width);
+        rootElem.css('width', width);
+        rootElem.css('height', height);
+        rootElem.css('padding', '0px');
+        rootElem.css('margin', '0px');
+        rootElem.css('overflow', 'hidden');
+        rootElem.css('display', 'block');
+        ////
+        ////
+        //
+        //element.css('width', scope.dhxWidth ? scope.dhxWidth + dim : '100%');
+        ////TODO: Come up with a way to do 100% height (Within current container)
+        //element.css('height', scope.dhxHeight ? scope.dhxHeight + dim : console.warn('Please set dhx-layout height!'));
+        //element.css('display', 'block'); // Mandatory
 
         //noinspection JSPotentiallyInvalidConstructorUsage
         var layout = new dhtmlXLayoutObject({
-            parent: element[0],
+            parent: rootElem[0],
             pattern: scope.dhxLayoutCode,
             //offsets: { //TODO: Add them as optionals
             //  top: 10,
@@ -59,6 +76,7 @@ angular.module('dhxDirectives')
               })
           }
         );
+        layout.setSizes();
 
         for (var i = 0; i < scope.panes.length; i++) {
           layout.cells(letters[i]).appendObject(scope.panes[i].jqElem[0]);
@@ -80,6 +98,8 @@ angular.module('dhxDirectives')
         dhxFixSize: '@'
       },
       link: function (scope, element, attrs, layoutCtrl) {
+
+
         layoutCtrl.registerPane({
           jqElem: element.detach(),
           cellConfig: {

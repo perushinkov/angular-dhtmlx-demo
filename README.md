@@ -1,6 +1,6 @@
 # angular-dhtmlx-demo
 
-This project aims to create usable and programmer-friendly directives for the dhtmlx components. These will be tested on the free version of the dhtmlx components. Note that if you need to use this code with DHTMLX for commercial purposes you will need to buy the PRO version.
+This project aims to create usable and programmer-friendly directives for the dhtmlx components. These will be tested on the GPL version of the dhtmlx components. Note that if you need to use this code with DHTMLX for commercial purposes you will need to buy the PRO version.
 
 ## Disclaimer
 
@@ -48,8 +48,9 @@ I am new to grunt, and overall a recent fan of Angular.js, so feel free to point
       </li>
     </ul>
   </li>
- <li>
-    <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/message.js">dhtmlXMessage</a>
+  <li>
+    <a
+      href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/message.js">dhtmlXMessage</a>
     <ul>
       <li>
         <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/cmp/message">
@@ -58,26 +59,38 @@ I am new to grunt, and overall a recent fan of Angular.js, so feel free to point
       </li>
     </ul>
   </li>
-   <li>
-      <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/chart.js">dhtmlXChart</a>
-      <ul>
-        <li>
-          <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/cmp/chart">
-            Example use (The most basic functionality)
-          </a>
-        </li>
-      </ul>
-    </li>
+  <li>
+    <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/chart.js">dhtmlXChart</a>
+    <ul>
+      <li>
+        <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/cmp/chart">
+          Example use (The most basic functionality)
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/tabbar.js">dhtmlXTabBar</a>
+    <ul>
+      <li>
+        <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/cmp/tabbar">
+          Example use
+        </a>
+      </li>
+    </ul>
+  </li>
 </ul>
 
-<p>For a much nicer demo just checkout the project and start the SPA application. It lets you preview a demonstration of each of the components, as well as its directive and usage in controller/template.<p>
-  
+<p>For a much nicer demo just checkout the project and start the SPA application. It lets you preview a demonstration of
+  each of the components, as well as its directive and usage in controller/template.<p>
+<img src="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/assets/images/example.jpg">
 
-## Build & development
 
-Run `grunt build` for building and `grunt serve` for preview.
+  ## Build & development
 
-## Testing
+  Run `grunt build` for building and `grunt serve` for preview.
 
-Running `grunt test` will run no unit tests with karma. (None have been written)
+  ## Testing
+
+  Running `grunt test` will run no unit tests with karma. (None have been written)
 

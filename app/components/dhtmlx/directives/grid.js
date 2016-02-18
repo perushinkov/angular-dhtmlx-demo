@@ -72,10 +72,10 @@ angular.module('dhxDirectives')
 
             var width = scope.dhxMaxWidth ? (scope.dhxMaxWidth + 'px') : '100%';
             var height = scope.dhxMaxHeight ? (scope.dhxMaxHeight + 'px') : '100%';
-            rootElem.css('max-width', width);
+            //rootElem.css('max-width', width);
             rootElem.css('width', width);
             rootElem.css('height', height);
-            rootElem.css('max-height', height);
+            //rootElem.css('max-height', height);
 
             //noinspection JSPotentiallyInvalidConstructorUsage
             var grid = new dhtmlXGridObject(rootElem[0]);

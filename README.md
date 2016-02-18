@@ -1,10 +1,14 @@
 # angular-dhtmlx-demo
 
-This project aims to create usable and programmer-friendly directives for the dhtmlx components. These will be tested on the GPL version of the dhtmlx components. Note that if you need to use this code with DHTMLX for commercial purposes you will need to buy the PRO version.
-
+This project aims to create usable and programmer-friendly directives for the dhtmlx components. These will be tested on the GPL version of the dhtmlx components. 
 ## Disclaimer
 
-I am new to grunt, and overall a recent fan of Angular.js, so feel free to point out any issues.
+First:
+Note that if you need to use this code with DHTMLX for commercial purposes you will need to buy the PRO version. Otherwise, you are under the GPL v2 licence.
+
+Second:
+I am new to grunt, and overall a recent fan of Angular.js, so feel free to point out any issues. 
+
 
 ## Completed:
 <ul>

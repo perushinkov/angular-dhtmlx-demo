@@ -89,7 +89,7 @@ angular.module('dhxDirectives')
         dhxWidth: '@',  // These are optional... However when specified they
         dhxHeight: '@', // should not conflict with the layout width and height
         dhxCollapse: '=', // Expression... since it is a boolean value
-        dhxFixSize: '@'
+        dhxFixSize: '='
       },
       link: function (scope, element, attrs, layoutCtrl) {
 

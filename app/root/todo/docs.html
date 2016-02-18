@@ -1,11 +1,11 @@
-<div style="padding:10px;">
-  <p>Usage (in template):</p>
-
-  <div hljs hljs-no-escape hljs-include="templateFile"></div>
-
-  <p>Usage (in controller):</p>
-  <div hljs hljs-no-escape hljs-include="controllerFile"></div>
-
-  <p>Directives code</p>
-  <div hljs hljs-no-escape hljs-include="directiveFile"></div>
-</div>
+<dhx-tabbar dhx-height="170">
+  <dhx-tabbar-pane dhx-selected="true" dhx-text="Template code">
+    <div hljs hljs-no-escape hljs-include="templateFile"></div>
+  </dhx-tabbar-pane>
+  <dhx-tabbar-pane dhx-text="Controller code">
+    <div hljs hljs-no-escape hljs-include="controllerFile"></div>
+  </dhx-tabbar-pane>
+  <dhx-tabbar-pane dhx-text="Directive code">
+    <div hljs hljs-no-escape hljs-include="directiveFile"></div>
+  </dhx-tabbar-pane>
+</dhx-tabbar>

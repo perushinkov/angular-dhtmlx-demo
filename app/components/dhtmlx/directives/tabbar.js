@@ -23,11 +23,12 @@ angular.module('dhxDirectives')
         dhxTabbar: "=",
         dhxWidth: "=", // Optional... Default is 100%. If set, use ems or pixels.
         dhxHeight: "=", // Mandatory.
-        dhxUseEms: "=" // Optional... If width and height is in ems. Px is default;
+        dhxUseEms: "=", // Optional... If width and height is in ems. Px is default;
+        dhxDisableScroll: "="
       },
       link: function (scope, element) {
         var dim = (scope.dhxUseEms ? 'em' : 'px');
-        var height = scope.dhxHeight ? (scope.dhxHeight + dim) : console.warn('Please set dhx-tabbar height!');
+        var height = scope.dhxHeight ? (scope.dhxHeight + dim) : '100%';
         var width = scope.dhxWidth ? (scope.dhxWidth + dim) : '100%';
 
         element.css('width', width);
@@ -43,8 +44,10 @@ angular.module('dhxDirectives')
             tabInfo.text
           );
           tabbar.tabs(tabInfo.id).attachObject(tabInfo.elem[0]);
+          tabbar.tabs(tabInfo.id).showInnerScroll();
           tabInfo.selected ? tabbar.tabs(tabInfo.id).setActive() : '';
-        })
+        });
+
       }
     };
   })

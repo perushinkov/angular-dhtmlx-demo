@@ -91,8 +91,14 @@ I am new to grunt, and overall a recent fan of Angular.js, so feel free to point
 
 
   ## Build & development
-
-  Run `grunt build` for building and `grunt serve` for preview.
+<pre>
+    git clone https://github.com/perushinkov/angular-dhtmlx-demo.git
+    cd angular-dhtmlx-demo/
+    npm install
+    bower install
+    grunt build
+    grunt serve
+</pre>
 
   ## Testing
 

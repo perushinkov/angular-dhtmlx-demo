@@ -21,7 +21,7 @@ angular.module('dhxDirectives')
           var current = -1;
           return function () {
             current++;
-            return letters[current];
+            return current < 7 ? letters[current] : console.error('Too many dhxLayout panes.');
           };
         })();
         this.registerPane = function (pane) {
@@ -41,6 +41,7 @@ angular.module('dhxDirectives')
 
         var dim = (scope.dhxUseEms ? 'em' : 'px');
         var height = scope.dhxHeight? (scope.dhxHeight + dim) : console.warn('Please set dhx-layout height!');
+        //TODO: Come up with a way to do 100% height (Within current container)
         var width = scope.dhxWidth? (scope.dhxWidth + dim) : '100%';
 
         //rootElem.css('max-width', width);
@@ -50,13 +51,6 @@ angular.module('dhxDirectives')
         rootElem.css('margin', '0px');
         rootElem.css('overflow', 'hidden');
         rootElem.css('display', 'block');
-        ////
-        ////
-        //
-        //element.css('width', scope.dhxWidth ? scope.dhxWidth + dim : '100%');
-        ////TODO: Come up with a way to do 100% height (Within current container)
-        //element.css('height', scope.dhxHeight ? scope.dhxHeight + dim : console.warn('Please set dhx-layout height!'));
-        //element.css('display', 'block'); // Mandatory
 
         //noinspection JSPotentiallyInvalidConstructorUsage
         var layout = new dhtmlXLayoutObject({

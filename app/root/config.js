@@ -8,7 +8,7 @@ angular.module('myApp')
       //DATA
       'cmpTreeGrid', 'cmpDataView', 'cmpEditor', 'cmpCarousel'
       // LAYOUT
-      , 'cmpTabbar', 'cmpWindows', 'cmpAccordion'
+      , 'cmpWindows', 'cmpAccordion'
       // NAVIGATION
       , 'cmpToolbar', 'cmpMenu', 'cmpRibbon'
       // NAV & LAYOUT
@@ -22,7 +22,7 @@ angular.module('myApp')
       //DATA
       'cmpGrid', 'cmpTree', 'cmpChart'
       // LAYOUT
-      , 'cmpLayout'
+      , 'cmpLayout', 'cmpTabbar'
       // NAVIGATION
       // NAV & LAYOUT
       // FORM CMP

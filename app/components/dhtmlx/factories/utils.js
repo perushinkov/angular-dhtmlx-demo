@@ -24,18 +24,17 @@ angular.module('dhxDirectives')
     /**
      * I hope to never resort to using that
      */
-    var nextDhxId = (function () {
-      var _uniqueIdCtr = -1;
-      var somePrefix = 'perushinkov_dhx_id_';
+    var createCounter = function () {
+      var current = -1;
       return function () {
-        _uniqueIdCtr++;
-        return somePrefix + _uniqueIdCtr;
+        current++;
+        return current;
       };
-    })();
+    };
 
     return {
       attachDhxHandlers: attachDhxHandlers,
       getImagePath: getImagePath,
-      nextDhxId: nextDhxId
+      createCounter: createCounter
     };
   }]);

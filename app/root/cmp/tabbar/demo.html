@@ -1,0 +1,25 @@
+<dhx-tabbar
+  dhx-height="170"
+  dhx-width="350"
+  dhx-use-ems="false">
+  <!-- Width is optional... however the 100% sometimes makes the borders disappear. TODO: Fix! -->
+  <dhx-tabbar-pane
+    dhx-text="Pane A"
+    dhx-selected="true">
+    <div style="padding:10px;">
+      <label>
+        Type in a phrase and see it appear in Pane B! <br/>
+        <input type="text" ng-model="someText">
+      </label>
+    </div>
+  </dhx-tabbar-pane>
+  <dhx-tabbar-pane
+    dhx-text="Pane B">
+    <p>You've just input {{someText}}</p>
+
+  </dhx-tabbar-pane>
+  <dhx-tabbar-pane
+    dhx-text="Pane C">
+    Some other arbitrary content!
+  </dhx-tabbar-pane>
+</dhx-tabbar>

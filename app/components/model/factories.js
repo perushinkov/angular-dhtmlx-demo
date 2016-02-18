@@ -50,10 +50,10 @@ angular.module('myApp').factory('Model', [function () {
           "id": "layoutCmps",
           "text": "Layout",
           "item": [
-            //{
-            //  "id": "Tabbar",
-            //  "text": "Tabbar"
-            //},
+            {
+              "id": "Tabbar",
+              "text": "Tabbar"
+            },
             //{
             //  "id": "Windows",
             //  "text": "Windows"

@@ -1,8 +1,13 @@
+<!--
+  Data does not need to be inlined.
+  It can also be in the controller.
+-->
+
 <dhx-chart
   dhx-view="bar"
   dhx-value="#sales#"
-  dhx-chart-width="150px"
-  dhx-chart-height="150px"
+  dhx-chart-width="230px"
+  dhx-chart-height="230px"
   dhx-data="[
     {sales: 3.8, year: '2017'},
     {sales: 3.2, year: '2006'},
@@ -13,21 +18,24 @@
 <dhx-chart
   style=""
   dhx-view="pie"
-  dhx-chart-width="160px"
-  dhx-chart-height="160px"
+  dhx-chart-width="360px"
+  dhx-chart-height="360px"
   dhx-value="#sales#"
+  dhx-label="#label#"
+  dhx-tooltip="#tooltip#"
+  dhx-pie-inner-text="#sales#"
   dhx-data="[
-    {sales: 3.8, year: '2017'},
-    {sales: 3.2, year: '2006'},
-    {sales: 5.8, year: '2013'},
-    {sales: 2.8, year: '2011'}
+    {sales: 3.8, year: '2017', label: 'Year 7', tooltip: 'Best year ever'},
+    {sales: 3.2, year: '2006', label: 'Year 6', tooltip: 'The wait before the best'},
+    {sales: 5.8, year: '2013', label: 'Year 13', tooltip: 'Misfortunes rise'},
+    {sales: 2.8, year: '2011', label: 'Year 11', tooltip: 'Nothing in particular'}
   ]"/>
 
 <dhx-chart
   dhx-view="area"
   dhx-value="#sales#"
-  dhx-chart-width="130px"
-  dhx-chart-height="130px"
+  dhx-chart-width="190px"
+  dhx-chart-height="190px"
   dhx-data="[
     {sales: 3.8, year: '2017'},
     {sales: 3.2, year: '2006'},

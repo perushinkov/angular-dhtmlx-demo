@@ -1,17 +1,10 @@
 // Generated on 2016-01-20 using generator-angular 0.15.1
 'use strict';
 
-// # Globbing
-// for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
-// use this if you want to recursively match all subfolders:
-// 'test/spec/**/*.js'
-
 module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
-
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-wiredep');
@@ -19,6 +12,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-wiredep-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   //// Automatically load required Grunt tasks
   //require('jit-grunt')(grunt, { //TODO: Switch to that once all else is fine
   //  useminPrepare: 'grunt-usemin',
@@ -174,6 +168,19 @@ module.exports = function (grunt) {
         }]
       }//,
       //server: '.tmp'
+    },
+    concat: {
+      options: {
+        separator: ';'
+      },
+      dist: {
+        src: [
+          'app/components/dhtmlx/main.js',
+          'app/components/dhtmlx/directives/*.js',
+          'app/components/dhtmlx/factories/*.js'
+        ],
+        dest: 'directives.js'
+      }
     },
     //
     //  // Add vendor prefixed styles
@@ -467,11 +474,8 @@ module.exports = function (grunt) {
     //  'usemin',
     //  'htmlmin'
   ]);
-  //
-  //grunt.registerTask('default', [
-  //  'newer:jshint',
-  //  'newer:jscs',
-  //  'test',
-  //  'build'
-  //]);
+
+  grunt.registerTask('buildLibrary', [
+    'concat:dist'
+  ]);
 };

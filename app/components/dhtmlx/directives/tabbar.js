@@ -20,7 +20,7 @@ angular.module('dhxDirectives')
         };
       },
       scope: {
-        dhxTabbar: "=",
+        dhxObj: "=",
         dhxWidth: "=", // Optional... Default is 100%. If set, use ems or pixels.
         dhxHeight: "=", // Mandatory.
         dhxUseEms: "=", // Optional... If width and height is in ems. Px is default;
@@ -37,7 +37,7 @@ angular.module('dhxDirectives')
 
         //noinspection JSPotentiallyInvalidConstructorUsage
         var tabbar = new dhtmlXTabBar(element[0]);
-        scope.dhxTabbar = tabbar;
+        scope.dhxObj ? scope.dhxObj = tabbar : '';
         scope.panes.forEach(function (tabInfo) {
           tabbar.addTab(
             tabInfo.id,

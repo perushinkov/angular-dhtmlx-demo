@@ -26,8 +26,8 @@ angular.module('dhxDirectives')
       },
       link: function (scope, element/*, attrs, popupCtrl*/) {
         //noinspection JSPotentiallyInvalidConstructorUsage
-        var popup = scope.dhxPopup = new dhtmlXPopup();
-
+        var popup = new dhtmlXPopup();
+        scope.dhxPopup ? scope.dhxPopup = popup : '';
         var parent = $(element[0]).parent()[0];
         var child = element.detach();
 

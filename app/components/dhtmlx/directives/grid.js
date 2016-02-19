@@ -20,7 +20,7 @@ angular.module('dhxDirectives')
          * NOTE: For better design and testability you should use instead the
          * configure and dataLoaded callbacks.
          */
-        dhxGrid: '=',
+        dhxObj: '=',
         /** Mandatory in current implementation! */
         dhxMaxHeight: '=',
         /** Optional. Default is 100%. */
@@ -100,8 +100,8 @@ angular.module('dhxDirectives')
 
             grid.init();
             // Finally parsing data
-            scope.dhxDataFormat = scope.dhxDataFormat || 'Basic JSON';
-            switch (scope.dhxDataFormat) {
+            var dhxDataFormat = scope.dhxDataFormat || 'Basic JSON';
+            switch (dhxDataFormat) {
               case 'Basic JSON':
                 grid.parse(scope.dhxData, 'json');
                 break;

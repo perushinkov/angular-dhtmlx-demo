@@ -54,10 +54,10 @@ angular.module('myApp').factory('Model', [function () {
               "id": "Tabbar",
               "text": "Tabbar"
             },
-            //{
-            //  "id": "Windows",
-            //  "text": "Windows"
-            //},
+            {
+              "id": "Windows",
+              "text": "Windows"
+            },
             //{
             //  "id": "Accordion",
             //  "text": "Accordion"

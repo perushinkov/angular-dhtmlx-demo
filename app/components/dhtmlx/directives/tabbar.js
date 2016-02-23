@@ -48,6 +48,7 @@ angular.module('dhxDirectives')
           tabInfo.selected ? tabbar.tabs(tabInfo.id).setActive() : '';
         });
 
+        DhxUtils.dhxUnloadOnScopeDestroy(scope, tabbar);
       }
     };
   })

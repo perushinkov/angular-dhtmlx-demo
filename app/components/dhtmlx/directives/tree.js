@@ -84,6 +84,7 @@ angular.module('dhxDirectives')
         if (scope.dhxOnDataLoaded) {
           scope.dhxOnDataLoaded(tree);
         }
+        DhxUtils.dhxUnloadOnScopeDestroy(scope, tree);
       }
     };
   });

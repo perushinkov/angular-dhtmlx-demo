@@ -63,8 +63,8 @@ angular.module('dhxDirectives')
         dhxHandlers: '=',
         dhxVersionId: '='
       },
-      compile: function compile(tElement, tAttrs, transclude) {
-        return function (scope, element, attrs) {
+      compile: function compile(/*tElement, tAttrs, transclude*/) {
+        return function (scope, element/*, attrs*/) {
           var loadStructure = function () {
             $(element).empty();
             $('<div></div>').appendTo(element[0]);
@@ -114,12 +114,14 @@ angular.module('dhxDirectives')
             if (scope.dhxOnDataLoaded) {
               scope.dhxOnDataLoaded(grid);
             }
+
+            DhxUtils.dhxUnloadOnScopeDestroy(scope, grid);
           };
-          scope.$watch('dhxVersionId', function (newVal, oldVal) {
+          scope.$watch('dhxVersionId', function (/*newVal, oldVal*/) {
             console.log('rebuilding...');
             loadStructure();
           });
         }
       }
     };
-  })
+  });

@@ -40,10 +40,32 @@ angular.module('dhxDirectives')
       }
     };
 
+    var dhxUnloadOnScopeDestroy = function (scope, dhxObj) {
+      var destructorName =
+        'destructor' in dhxObj
+          ? 'destructor'
+          :
+          ('unload' in dhxObj
+            ? 'unload'
+            : null);
+      if (destructorName === null) {
+        console.error('Dhtmlx object does not have a destructor or unload method! Failed to register with scope destructor!');
+        return;
+      }
+
+      scope.$on(
+        "$destroy",
+        function (/*event*/) {
+          dhxObj[destructorName]();
+        }
+      );
+    };
+
     return {
       attachDhxHandlers: attachDhxHandlers,
       getImagePath: getImagePath,
       createCounter: createCounter,
-      removeUndefinedProps: removeUndefinedProps
+      removeUndefinedProps: removeUndefinedProps,
+      dhxUnloadOnScopeDestroy: dhxUnloadOnScopeDestroy
     };
   }]);

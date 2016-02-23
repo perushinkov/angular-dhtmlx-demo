@@ -9,7 +9,7 @@
  * http://docs.dhtmlx.com/layout__init.html
  */
 angular.module('dhxDirectives')
-  .directive('dhxLayout', function factory() {
+  .directive('dhxLayout', function factory(DhxUtils) {
     var letters = "abcdefg";
     return {
       restrict: 'E',
@@ -75,6 +75,8 @@ angular.module('dhxDirectives')
         for (var i = 0; i < scope.panes.length; i++) {
           layout.cells(letters[i]).appendObject(scope.panes[i].jqElem[0]);
         }
+
+        DhxUtils.dhxUnloadOnScopeDestroy(scope, layout);
       }
     };
   })

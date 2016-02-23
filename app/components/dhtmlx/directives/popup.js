@@ -5,7 +5,7 @@
  * TODO: Currently dhxPopup targets parent. Add more ways of doing this.
  */
 angular.module('dhxDirectives')
-  .directive('dhxPopup', function factory() {
+  .directive('dhxPopup', function factory(DhxUtils) {
     return {
       restrict: 'E',
       require: 'dhxPopup',
@@ -41,9 +41,11 @@ angular.module('dhxDirectives')
             popup.hide();
         };
         popup.attachObject(child[0]);
-        scope.dhxShow ? popup.show() : popup.hide()
+        scope.dhxShow ? popup.show() : popup.hide();
         scope.$watch('dhxShow', renderPopup);
         scope.$watch('dhxRefresh', renderPopup);
+
+        DhxUtils.dhxUnloadOnScopeDestroy(scope, popup);
       }
     };
   });

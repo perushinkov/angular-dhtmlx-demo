@@ -3,7 +3,7 @@
  * Created by Emanuil on 09/02/2016.
  */
 angular.module('dhxDirectives')
-  .directive('dhxChart', function factory() {
+  .directive('dhxChart', function factory(DhxUtils) {
     return {
       restrict: 'E',
       require: 'dhxChart',
@@ -28,7 +28,7 @@ angular.module('dhxDirectives')
         //dhxLegend: '='
         dhxPieInnerText: '@'
       },
-      link: function (scope, element, attrs) {
+      link: function (scope, element) {
         //$('<div></div>').appendTo(element[0]);
         var rootElem = element;//.children().first();
         rootElem.css('width', scope.dhxChartWidth);
@@ -60,8 +60,11 @@ angular.module('dhxDirectives')
         //scope.dhxLegend ? descriptor.legend = scope.dhxLegend : '';
         //scope.dhxWidth ? descriptor.width = scope.dhxWidth : '';
 
+        //noinspection JSPotentiallyInvalidConstructorUsage
         var chart = new dhtmlXChart(descriptor);
         chart.parse(scope.dhxData, 'json');
+
+        DhxUtils.dhxUnloadOnScopeDestroy(scope, chart);
       }
     };
   });

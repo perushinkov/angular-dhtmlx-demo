@@ -71,14 +71,7 @@ angular.module('dhxDirectives')
             var domElem = windowInfo.elem[0];
             win.attachObject(domElem);
           });
-
-        //TODO: Add destructors for other components too, to free RAM and leaks
-        scope.$on(
-          "$destroy",
-          function (/*event*/) {
-            windows.unload();
-          }
-        );
+        DhxUtils.dhxUnloadOnScopeDestroy(scope, windows);
       }
     };
   })

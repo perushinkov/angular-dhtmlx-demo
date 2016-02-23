@@ -3,7 +3,13 @@
  * Created by Emanuil on 09/02/2016.
  */
 angular.module('dhxDirectives')
-  .directive('dhxMessage', function factory() {
+  .directive('dhxMessage', function factory(DhxUtils) {
+    var nextMsgId = (function () {
+      var _internalCounter = DhxUtils.createCounter();
+      return function () {
+        return 'msg_' + _internalCounter();
+      };
+    })();
     return {
       restrict: 'E',
       require: 'dhxMessage',
@@ -12,7 +18,6 @@ angular.module('dhxDirectives')
       scope: {
         // shared props for notifications, confirms and alerts
         dhxInvoker: '=',
-        dhxId: '@',
         dhxText: '@',
         /**
          * alert, alert-warning, alert-error,
@@ -32,13 +37,13 @@ angular.module('dhxDirectives')
         // Just for Confirm
         dhxCancel: '@'
       },
-      link: function (scope, element, attrs) {
+      link: function (scope/*, element, attrs*/) {
         scope.dhxInvoker = function () {
           var instObj = {};
 
           // Not bothering with checks. Relying on the user providing just the data that's
           // needed for the message type
-          scope.dhxId !== undefined ? instObj.id = scope.dhxId : '';
+          instObj.id = nextMsgId();
           scope.dhxText !== undefined ? instObj.text = scope.dhxText : '';
           scope.dhxType !== undefined ? instObj.type = scope.dhxType : '';
           scope.dhxExpire !== undefined ? instObj.expire = scope.dhxExpire : '';
@@ -54,8 +59,14 @@ angular.module('dhxDirectives')
               scope.dhxCallback(data);
             };
           }
-
           dhtmlx.message(instObj);
+
+          scope.$on(
+            "$destroy",
+            function (/*event*/) {
+              dhtmlx.message.hide(instObj.id);
+            }
+          );
         };
       }
     };

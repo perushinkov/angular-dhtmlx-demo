@@ -32,9 +32,18 @@ angular.module('dhxDirectives')
       };
     };
 
+    var removeUndefinedProps = function(obj) {
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop) && obj[prop] === undefined) {
+          delete obj[prop];
+        }
+      }
+    };
+
     return {
       attachDhxHandlers: attachDhxHandlers,
       getImagePath: getImagePath,
-      createCounter: createCounter
+      createCounter: createCounter,
+      removeUndefinedProps: removeUndefinedProps
     };
   }]);

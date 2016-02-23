@@ -21,6 +21,10 @@ angular.module('dhxDirectives')
       return _imgPath;
     };
 
+    var setImagePath = function (imgPath) {
+      _imgPath = imgPath;
+    };
+
     /**
      * I hope to never resort to using that
      */
@@ -64,6 +68,7 @@ angular.module('dhxDirectives')
     return {
       attachDhxHandlers: attachDhxHandlers,
       getImagePath: getImagePath,
+      setImagePath: setImagePath,
       createCounter: createCounter,
       removeUndefinedProps: removeUndefinedProps,
       dhxUnloadOnScopeDestroy: dhxUnloadOnScopeDestroy

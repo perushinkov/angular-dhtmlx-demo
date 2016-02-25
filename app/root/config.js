@@ -14,7 +14,7 @@ angular.module('myApp')
       // NAV & LAYOUT
       , 'cmpSidebar'
       // FORM CMP
-      , 'cmpCombo', 'cmpCalendar', 'cmpColorPicker', 'cmpSlider', 'cmpForm'
+      , 'cmpCombo', 'cmpCalendar', 'cmpColorPicker', 'cmpSlider'
       // NOTIFICATIONS
     ];
 
@@ -26,6 +26,7 @@ angular.module('myApp')
       // NAVIGATION
       // NAV & LAYOUT
       // FORM CMP
+      , 'cmpForm'
       // NOTIFICATIONS
       , 'cmpPopup', 'cmpMessage'
     ];

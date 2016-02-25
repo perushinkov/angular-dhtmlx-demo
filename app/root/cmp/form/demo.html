@@ -1,0 +1,71 @@
+<p>Note that is still somewhat untested!</p>
+<dhx-windows>
+  <dhx-window
+    dhx-text="Form from template"
+    dhx-height="300"
+    dhx-width="480"
+    dhx-center="true"
+    dhx-btn-close="false"
+    dhx-show-inner-scroll="true"
+    dhx-keep-in-viewport="true">
+    <!--
+      Keep in mind that dhx-form is the interpreter whereas all the dhx-f- directives
+      just generate and aggregate json, which is then sent upwards until it reaches
+      the dhx-form component
+    -->
+    <dhx-form
+      dhx-obj="form"
+      dhx-handlers="formHandlers">
+      <dhx-f-settings dhx-position="label-left" dhx-label-width="150" dhx-input-width="370" dhx-note-width="150"></dhx-f-settings>
+      <dhx-f-fieldset dhx-name="data" dhx-label="Welcome">
+        <dhx-f-radio dhx-name="type" dhx-value="0" dhx-checked="true" dhx-label="Already have an account">
+          <dhx-f-input dhx-name="username" dhx-value="p_rossi" dhx-label="Login" dhx-info="true">
+            <dhx-f-note>
+              Please type your login here
+            </dhx-f-note>
+          </dhx-f-input>
+          <dhx-f-password dhx-name="password" dhx-value="123" dhx-label="Password" dhx-info="1">
+            <dhx-f-note dhx-width="150">
+              Please type your password here!
+            </dhx-f-note>
+          </dhx-f-password>la
+          <dhx-f-checkbox dhx-checked="true" dhx-label="Remember me"></dhx-f-checkbox>
+        </dhx-f-radio>
+        <dhx-f-radio dhx-name="type" dhx-value="1" dhx-label="Not registered yet">
+          <dhx-f-input dhx-value="Patricia D. Rossi" dhx-label="Full Name"></dhx-f-input>
+          <dhx-f-input dhx-value="P_rossi@Ex.com" dhx-label="Email Address"></dhx-f-input>
+          <dhx-f-password dhx-value="123" dhx-label="Password"></dhx-f-password>
+          <dhx-f-password dhx-value="123" dhx-label="Confirm Password"></dhx-f-password>
+          <dhx-f-checkbox dhx-label="Subscribe on news"></dhx-f-checkbox>
+        </dhx-f-radio>
+        <dhx-f-radio dhx-name="type" dhx-value="2" dhx-label="Guest login">
+          <dhx-f-select dhx-label="Account type">
+            <dhx-f-option dhx-value="admin" dhx-text="Admin"></dhx-f-option>
+            <dhx-f-option dhx-value="org" dhx-text="Organiser"></dhx-f-option>
+            <dhx-f-option dhx-value="poweruser" dhx-text="Power User"></dhx-f-option>
+            <dhx-f-option dhx-value="user" dhx-text="User"></dhx-f-option>
+          </dhx-f-select>
+          <dhx-f-checkbox dhx-value="Show logs window"></dhx-f-checkbox>
+        </dhx-f-radio>
+        <dhx-f-button dhx-name="proceed" dhx-value="Proceed"></dhx-f-button>
+      </dhx-f-fieldset>
+      <dhx-f-new-column></dhx-f-new-column>
+    </dhx-form>
+  </dhx-window>
+
+  <!--<dhx-x-window-->
+    <!--dhx-x-text="Form with json from controller"-->
+    <!--dhx-x-height="500"-->
+    <!--dhx-x-width="480"-->
+    <!--dhx-x-btn-close="false"-->
+    <!--dhx-x-show-inner-scroll="true"-->
+    <!--dhx-x-keep-in-viewport="true">-->
+    <!--&lt;!&ndash;TODO: Make this work!&ndash;&gt;-->
+    <!--<dhx-x-form>-->
+      <!--<dhx-f-json-->
+        <!--dhx-x-json="jsonData"></dhx-f-json>-->
+    <!--</dhx-x-form>-->
+  <!--</dhx-x-window>-->
+
+</dhx-windows>
+

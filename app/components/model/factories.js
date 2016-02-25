@@ -96,32 +96,32 @@ angular.module('myApp').factory('Model', [function () {
         //    }
         //  ]
         //},
-        //{
-        //  "id": "formCmps",
-        //  "text": "Forms",
-        //  "item": [
-        //    {
-        //      "id": "Combo",
-        //      "text": "Combo"
-        //    },
-        //    {
-        //      "id": "Calendar",
-        //      "text": "Calendar"
-        //    },
-        //    {
-        //      "id": "ColorPicker",
-        //      "text": "ColorPicker"
-        //    },
-        //    {
-        //      "id": "Slider",
-        //      "text": "Slider"
-        //    },
-        //    {
-        //      "id": "Form",
-        //      "text": "Form"
-        //    }
-        //  ]
-        //},
+        {
+          "id": "formCmps",
+          "text": "Forms",
+          "item": [
+            //{
+            //  "id": "Combo",
+            //  "text": "Combo"
+            //},
+            //{
+            //  "id": "Calendar",
+            //  "text": "Calendar"
+            //},
+            //{
+            //  "id": "ColorPicker",
+            //  "text": "ColorPicker"
+            //},
+            //{
+            //  "id": "Slider",
+            //  "text": "Slider"
+            //},
+            {
+              "id": "Form",
+              "text": "Form"
+            }
+          ]
+        },
         {
           "id": "notifyCmps",
           "text": "Notifications",

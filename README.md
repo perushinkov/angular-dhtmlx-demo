@@ -93,6 +93,16 @@ I am new to grunt, and overall a recent fan of Angular.js, so feel free to point
       </li>
     </ul>
   </li>
+  <li>
+    <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/form.js">dhtmlXForm</a>
+    <ul>
+      <li>
+        <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/cmp/form">
+          Example use (Work in Progress)
+        </a>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <p>For a much nicer demo just checkout the project and start the SPA application. It lets you preview a demonstration of

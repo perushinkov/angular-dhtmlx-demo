@@ -3,7 +3,7 @@
  * Created by Emanuil on 09/02/2016.
  */
 angular.module('dhxDirectives')
-  .directive('dhxMessage', function factory(DhxUtils) {
+  .directive('dhxMessage', function factory($timeout, DhxUtils) {
     var nextMsgId = (function () {
       var _internalCounter = DhxUtils.createCounter();
       return function () {
@@ -35,10 +35,11 @@ angular.module('dhxDirectives')
         dhxTitle: '@',
         dhxOk: '@',
         // Just for Confirm
-        dhxCancel: '@'
+        dhxCancel: '@',
+        dhxInvokeOnCreate: '='
       },
       link: function (scope/*, element, attrs*/) {
-        scope.dhxInvoker = function () {
+        var invoker = function () {
           var instObj = {};
 
           // Not bothering with checks. Relying on the user providing just the data that's
@@ -68,6 +69,10 @@ angular.module('dhxDirectives')
             }
           );
         };
+        scope.dhxInvoker !== undefined ? scope.dhxInvoker = invoker : '';
+        if(scope.dhxInvokeOnCreate) {
+          invoker();
+        }
       }
     };
   });

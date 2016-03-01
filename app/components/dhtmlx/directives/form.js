@@ -1,6 +1,10 @@
 "use strict";
 /**
  * Created by Emanuil on 24/02/2016.
+ *
+ * Links:
+ *   for validate properties:
+ *   http://docs.dhtmlx.com/form__validation.html#validation
  */
 (function () {
   var linkFn = function (scope, element/*, json*/) {
@@ -71,6 +75,8 @@
         element.empty();
         var div = $('<div></div>').appendTo(element[0]);
         var form = new dhtmlXForm(div[0], data);
+        form.enableLiveValidation(true);
+        form.validate();
         scope.dhxObj ? scope.dhxObj = form : '';
         DhxUtils.attachDhxHandlers(form, scope.dhxHandlers);
 

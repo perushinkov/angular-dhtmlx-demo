@@ -32,7 +32,8 @@ angular.module('dhxDirectives')
         dhxLayoutCode: "@",
         dhxWidth: "=", // Optional... Default is 100%. If set, use ems or pixels.
         dhxHeight: "=", // Mandatory.
-        dhxUseEms: "=" // Optional... If width and height is in ems. Px is default;
+        dhxUseEms: "=", // Optional... If width and height is in ems. Px is   default;
+        dhxHandlers: '='
       },
       link: function (scope, element, attrs, layoutCtrl) {
         $(element).empty();
@@ -75,7 +76,7 @@ angular.module('dhxDirectives')
         for (var i = 0; i < scope.panes.length; i++) {
           layout.cells(letters[i]).appendObject(scope.panes[i].jqElem[0]);
         }
-
+        DhxUtils.attachDhxHandlers(layout, scope.dhxHandlers);
         DhxUtils.dhxUnloadOnScopeDestroy(scope, layout);
       }
     };

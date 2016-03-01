@@ -22,11 +22,14 @@ angular.module('dhxDirectives')
          * if dhxRefresh is changed the popup is refresh. It reappears if dhxShow is true,
          * else hides.
          */
+        dhxHandlers: '=',
         dhxRefresh: '='
       },
       link: function (scope, element/*, attrs, popupCtrl*/) {
         //noinspection JSPotentiallyInvalidConstructorUsage
         var popup = new dhtmlXPopup();
+        DhxUtils.attachDhxHandlers(popup, scope.dhxHandlers);
+
         scope.dhxPopup ? scope.dhxPopup = popup : '';
         var parent = $(element[0]).parent()[0];
         var child = element.detach();

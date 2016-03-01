@@ -24,7 +24,8 @@ angular.module('dhxDirectives')
         dhxWidth: "=", // Optional... Default is 100%. If set, use ems or pixels.
         dhxHeight: "=", // Mandatory.
         dhxUseEms: "=", // Optional... If width and height is in ems. Px is default;
-        dhxDisableScroll: "="
+        dhxDisableScroll: "=",
+        dhxHandlers: '='
       },
       link: function (scope, element) {
         var dim = (scope.dhxUseEms ? 'em' : 'px');
@@ -37,6 +38,7 @@ angular.module('dhxDirectives')
 
         //noinspection JSPotentiallyInvalidConstructorUsage
         var tabbar = new dhtmlXTabBar(element[0]);
+        DhxUtils.attachDhxHandlers(tabbar, scope.dhxHandlers);
         scope.dhxObj ? scope.dhxObj = tabbar : '';
         scope.panes.forEach(function (tabInfo) {
           tabbar.addTab(

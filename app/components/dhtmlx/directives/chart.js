@@ -26,6 +26,7 @@ angular.module('dhxDirectives')
         //dhxYAxis: '=',
         //dhxSeries: '=',
         //dhxLegend: '='
+        dhxHandlers: '=',
         dhxPieInnerText: '@'
       },
       link: function (scope, element) {
@@ -62,8 +63,9 @@ angular.module('dhxDirectives')
 
         //noinspection JSPotentiallyInvalidConstructorUsage
         var chart = new dhtmlXChart(descriptor);
-        chart.parse(scope.dhxData, 'json');
 
+        DhxUtils.attachDhxHandlers(chart, scope.dhxHandlers);
+        chart.parse(scope.dhxData, 'json');
         DhxUtils.dhxUnloadOnScopeDestroy(scope, chart);
       }
     };

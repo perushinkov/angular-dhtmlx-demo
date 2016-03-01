@@ -54,6 +54,8 @@ angular.module('dhxDirectives')
               conf.width,
               conf.height
             );
+
+            conf.header != undefined ? (!conf.header ? win.hideHeader() : '') : '';
             conf.center !== undefined ? (conf.center ? win.center() : '') : '';
             conf.keep_in_viewport !== undefined ? win.keepInViewport(!!conf.keep_in_viewport) : '';
             conf.showInnerScroll !== undefined ?  (conf.showInnerScroll ? win.showInnerScroll() : '') : '';
@@ -82,6 +84,7 @@ angular.module('dhxDirectives')
       scope: {
         dhxCenter: '=',
         dhxHeight: '=',
+        dhxHeader: '=',
         dhxKeepInViewport: '=',
         dhxShowInnerScroll: '=',
         dhxLeft: '=',
@@ -103,6 +106,7 @@ angular.module('dhxDirectives')
           config: {
             center: scope.dhxCenter,
             height: scope.dhxHeight,
+            header: scope.dhxHeader,
             keep_in_viewport: scope.dhxKeepInViewport,
             showInnerScroll: scope.dhxShowInnerScroll,
             left: scope.dhxLeft,

@@ -31,14 +31,13 @@ angular.module('dhxDirectives')
         var dim = (scope.dhxUseEms ? 'em' : 'px');
         var height = scope.dhxHeight ? (scope.dhxHeight + dim) : '100%';
         var width = scope.dhxWidth ? (scope.dhxWidth + dim) : '100%';
-
         element.css('width', width);
         element.css('height', height);
         element.css('display', 'block');
 
         //noinspection JSPotentiallyInvalidConstructorUsage
         var tabbar = new dhtmlXTabBar(element[0]);
-        DhxUtils.attachDhxHandlers(tabbar, scope.dhxHandlers);
+
         scope.dhxObj ? scope.dhxObj = tabbar : '';
         scope.panes.forEach(function (tabInfo) {
           tabbar.addTab(
@@ -49,7 +48,7 @@ angular.module('dhxDirectives')
           tabbar.tabs(tabInfo.id).showInnerScroll();
           tabInfo.selected ? tabbar.tabs(tabInfo.id).setActive() : '';
         });
-
+        DhxUtils.attachDhxHandlers(tabbar, scope.dhxHandlers);
         DhxUtils.dhxUnloadOnScopeDestroy(scope, tabbar);
       }
     };

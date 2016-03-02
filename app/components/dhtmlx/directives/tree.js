@@ -62,28 +62,28 @@ angular.module('dhxDirectives')
 
         scope.dhxTree = tree;
 
-        DhxUtils.attachDhxHandlers(tree, scope.dhxHandlers);
-
         // Additional optional configuration
         tree.enableCheckBoxes(scope.dhxEnableCheckBoxes);
+
         tree.enableDragAndDrop(scope.dhxEnableDragAndDrop);
         tree.enableHighlighting(scope.dhxEnableHighlighting);
         tree.enableThreeStateCheckboxes(scope.dhxEnableThreeStateCheckboxes);
         tree.enableTreeImages(scope.dhxEnableTreeImages);
         tree.enableTreeLines(scope.dhxEnableTreeLines);
-
         // Letting controller add configurations before data is parsed
+
         if (scope.dhxConfigureFunc) {
           scope.dhxConfigureFunc(tree);
         }
-
         // Finally parsing data
         tree.parse(scope.dhxJsonData, "json");
 
         // Letting controller do data manipulation after data has been loaded
+
         if (scope.dhxOnDataLoaded) {
           scope.dhxOnDataLoaded(tree);
         }
+        DhxUtils.attachDhxHandlers(tree, scope.dhxHandlers);
         DhxUtils.dhxUnloadOnScopeDestroy(scope, tree);
       }
     };

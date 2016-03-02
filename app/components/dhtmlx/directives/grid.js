@@ -91,8 +91,6 @@ angular.module('dhxDirectives')
             scope.dhxInitWidths ? grid.setInitWidths(scope.dhxInitWidths): '';
             scope.dhxInitWidthsP ? grid.setInitWidthsP(scope.dhxInitWidthsP): '';
 
-            DhxUtils.attachDhxHandlers(grid, scope.dhxHandlers);
-
             // Letting controller add configurations before data is parsed
             if (scope.dhxConfigureFunc) {
               scope.dhxConfigureFunc(grid);
@@ -114,7 +112,7 @@ angular.module('dhxDirectives')
             if (scope.dhxOnDataLoaded) {
               scope.dhxOnDataLoaded(grid);
             }
-
+            DhxUtils.attachDhxHandlers(grid, scope.dhxHandlers);
             DhxUtils.dhxUnloadOnScopeDestroy(scope, grid);
           };
           scope.$watch('dhxVersionId', function (/*newVal, oldVal*/) {

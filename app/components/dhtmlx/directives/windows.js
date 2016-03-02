@@ -41,9 +41,7 @@ angular.module('dhxDirectives')
       link: function (scope, element, attrs, windowsCtrl) {
         //noinspection JSPotentiallyInvalidConstructorUsage
         var windows = new dhtmlXWindows();
-        DhxUtils.attachDhxHandlers(windows, scope.dhxHandlers);
         windows.attachViewportTo(windowsCtrl.getContainer());
-
         windowsCtrl
           .getWindowInfos()
           .forEach(function (windowInfo) {
@@ -75,6 +73,8 @@ angular.module('dhxDirectives')
             var domElem = windowInfo.elem[0];
             win.attachObject(domElem);
           });
+
+        DhxUtils.attachDhxHandlers(windows, scope.dhxHandlers);
         DhxUtils.dhxUnloadOnScopeDestroy(scope, windows);
       }
     };

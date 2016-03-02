@@ -28,7 +28,7 @@ angular.module('dhxDirectives')
       link: function (scope, element/*, attrs, popupCtrl*/) {
         //noinspection JSPotentiallyInvalidConstructorUsage
         var popup = new dhtmlXPopup();
-        DhxUtils.attachDhxHandlers(popup, scope.dhxHandlers);
+
 
         scope.dhxPopup ? scope.dhxPopup = popup : '';
         var parent = $(element[0]).parent()[0];
@@ -47,7 +47,7 @@ angular.module('dhxDirectives')
         scope.dhxShow ? popup.show() : popup.hide();
         scope.$watch('dhxShow', renderPopup);
         scope.$watch('dhxRefresh', renderPopup);
-
+        DhxUtils.attachDhxHandlers(popup, scope.dhxHandlers);
         DhxUtils.dhxUnloadOnScopeDestroy(scope, popup);
       }
     };

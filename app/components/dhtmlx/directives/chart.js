@@ -64,8 +64,9 @@ angular.module('dhxDirectives')
         //noinspection JSPotentiallyInvalidConstructorUsage
         var chart = new dhtmlXChart(descriptor);
 
-        DhxUtils.attachDhxHandlers(chart, scope.dhxHandlers);
+
         chart.parse(scope.dhxData, 'json');
+        DhxUtils.attachDhxHandlers(chart, scope.dhxHandlers);
         DhxUtils.dhxUnloadOnScopeDestroy(scope, chart);
       }
     };

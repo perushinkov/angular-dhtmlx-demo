@@ -16,10 +16,10 @@ angular.module('myApp').factory('Model', [function () {
               "id": "Grid",
               "text": "Grid"
             },
-            //{
-            //  "id": "TreeGrid",
-            //  "text": "TreeGrid"
-            //},
+            {
+              "id": "TreeGrid",
+              "text": "TreeGrid"
+            },
             {
               "id": "Tree",
               "text": "Tree"

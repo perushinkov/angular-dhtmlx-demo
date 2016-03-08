@@ -12,5 +12,6 @@ angular.module('myApp')
 
     $scope.controllerFile = 'root/cmp/' + simpleStateName + '/controllers.js';
     $scope.templateFile = 'root/cmp/' + simpleStateName + '/demo.html';
-    $scope.directiveFile = 'components/dhtmlx/directives/' + simpleStateName + '.js';
+    var directiveName = simpleStateName == 'treegrid' ? 'grid' : simpleStateName;
+    $scope.directiveFile = 'components/dhtmlx/directives/' + directiveName + '.js';
   }]);

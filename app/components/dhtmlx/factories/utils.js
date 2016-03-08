@@ -4,7 +4,7 @@
  */
 angular.module('dhxDirectives')
   .factory('DhxUtils', [function () {
-    var _imgPath = "bower_components/dhtmlx/imgs/dhxtree_skyblue/";
+    var _imgPath = "bower_components/dhtmlx/imgs/";
 
     /**
      * @param dhxObject

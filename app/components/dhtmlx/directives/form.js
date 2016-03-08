@@ -29,11 +29,8 @@
 
     var tagName = element.prop('tagName').substr(6).toLowerCase();
     if (tagName !== 'option') {
-      obj.type = tagName;
+      obj.type = tagName.split('-').join('');
     }
-    //} else {
-    //  obj = json;
-    //}
 
     var newElem = $('<JSON>');
     newElem.attr('savedTagName', tagName);
@@ -74,6 +71,7 @@
         var data = linkFn(scope, element).list;
         element.empty();
         var div = $('<div></div>').appendTo(element[0]);
+        console.log(JSON.stringify(data));
         var form = new dhtmlXForm(div[0], data);
         form.enableLiveValidation(true);
         form.validate();
@@ -84,7 +82,19 @@
     };
   });
 
-
+  module.directive('dhxFBlock', function factory() {
+    return {
+      restrict: 'E',
+      scope: {
+        dhxDisabled: '=',
+        dhxHidden: '=',
+        dhxList: '=',
+        dhxName: '@',
+        dhxWidth: '='
+      },
+      link: linkFn
+    };
+  });
   module.directive('dhxFButton', function factory() {
     return {
       restrict: 'E',

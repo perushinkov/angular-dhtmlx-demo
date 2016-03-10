@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="assets/styles/main.css">
 
-    <link rel="stylesheet" href="bower_components/dhtmlx/dhtmlx.css" />
+    <link rel="stylesheet" href="bower_components/dhtmlx/dhtmlx_debug.css" />
     <!-- bower:css -->
     <!-- endbower -->
     <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/tomorrow.min.css" />-->
@@ -16,19 +16,19 @@
 
 
   </head>
-  <body ng-app="myApp" style="margin:0;" ng-controller="AppController">
+  <body ng-app="myApp" ng-controller="AppController">
 
   <div class="headerTitle">
     <h1>DHTMLX Wrappers for Angular.js (demo)</h1>
   </div>
 
-  <div class="content">
-    <div ui-view></div>
+  <div class="content"  style="height: 85%;">
+    <div style="height: 100%;" ui-view></div>
   </div>
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/dhtmlx/dhtmlx.js"></script>
+  <script src="bower_components/dhtmlx/dhtmlx_debug.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-highlightjs/build/angular-highlightjs.js"></script>
   <!-- endbower -->

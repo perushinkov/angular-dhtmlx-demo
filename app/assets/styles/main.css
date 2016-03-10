@@ -1,6 +1,10 @@
-body {
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   background-color: #a9a9cc;
 }
+
 .headerTitle {
   background: url("../images/gradient.png") repeat;
   display: inline-block;
@@ -16,7 +20,8 @@ body {
 }
 
 .content {
-  padding: 1em;
+  padding: 1em
+  height: 100%;
 }
 
 .code {

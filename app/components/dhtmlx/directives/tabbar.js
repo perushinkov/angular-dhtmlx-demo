@@ -29,14 +29,17 @@ angular.module('dhxDirectives')
       },
       link: function (scope, element) {
         var dim = (scope.dhxUseEms ? 'em' : 'px');
-        var height = scope.dhxHeight ? (scope.dhxHeight + dim) : '100%';
-        var width = scope.dhxWidth ? (scope.dhxWidth + dim) : '100%';
-        element.css('width', width);
-        element.css('height', height);
+        var height = scope.dhxHeight ? (scope.dhxHeight + dim) : null;
+        var width = scope.dhxWidth ? (scope.dhxWidth + dim) : null;
+        height ? element.css('width', width) : '';
+        width ? element.css('height', height) : '';
         element.css('display', 'block');
 
         //noinspection JSPotentiallyInvalidConstructorUsage
         var tabbar = new dhtmlXTabBar(element[0]);
+        if(!height && !width) {
+          tabbar.enableAutoReSize();
+        }
 
         scope.dhxObj ? scope.dhxObj = tabbar : '';
         scope.panes.forEach(function (tabInfo) {

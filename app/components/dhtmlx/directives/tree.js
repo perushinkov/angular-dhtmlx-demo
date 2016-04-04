@@ -60,7 +60,7 @@ angular.module('dhxDirectives')
           image_path: DhxUtils.getImagePath() + 'dhxtree_skyblue/'
         });
 
-        scope.dhxTree = tree;
+        scope.dhxTree ? scope.dhxTree = tree : '';
 
         // Additional optional configuration
         tree.enableCheckBoxes(scope.dhxEnableCheckBoxes);

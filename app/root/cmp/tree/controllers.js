@@ -44,4 +44,6 @@ angular.module('myApp')
         }
       }
     ];
+
+    $scope.contextMenu = {};
   }]);

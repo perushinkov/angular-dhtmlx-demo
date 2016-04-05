@@ -4,6 +4,7 @@
  */
 angular.module('myApp')
   .controller('GridController', ['$scope' ,function ($scope) {
+    $scope.contextMenu = {};
     $scope.gridData = {
       rows:[
         { id:1, data: ["No time to think", "John Grasham", "100"]},

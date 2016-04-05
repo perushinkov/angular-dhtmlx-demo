@@ -61,7 +61,9 @@ angular.module('dhxDirectives')
          * Optional
          */
         dhxHandlers: '=',
-        dhxVersionId: '='
+        dhxVersionId: '=',
+
+        dhxContextMenu: '='
       },
       compile: function compile(/*tElement, tAttrs, transclude*/) {
         return function (scope, element/*, attrs*/) {
@@ -77,6 +79,13 @@ angular.module('dhxDirectives')
             var grid = new dhtmlXGridObject(rootElem[0]);
             grid.setImagePath(DhxUtils.getImagePath());
 
+            scope.dhxContextMenu ? grid.enableContextMenu(scope.dhxContextMenu) : '';
+            scope.$watch(
+              "dhxContextMenu",
+              function handle( newValue, oldValue ) {
+                grid.enableContextMenu(newValue);
+              }
+            );
 
             scope.dhxHeader ? grid.setHeader(scope.dhxHeader): '';
             scope.dhxColTypes ? grid.setColTypes(scope.dhxColTypes): '';

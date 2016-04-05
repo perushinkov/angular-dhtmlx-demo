@@ -49,7 +49,9 @@ angular.module('dhxDirectives')
          * customization power.
          */
         dhxConfigureFunc: '=',
-        dhxOnDataLoaded: '='
+        dhxOnDataLoaded: '=',
+
+        dhxContextMenu: '='
       },
       link: function (scope, element/*, attrs, treeCtrl*/) {
         //noinspection JSPotentiallyInvalidConstructorUsage
@@ -61,6 +63,14 @@ angular.module('dhxDirectives')
         });
 
         scope.dhxTree ? scope.dhxTree = tree : '';
+
+        scope.dhxContextMenu ? tree.enableContextMenu(scope.dhxContextMenu) : '';
+        scope.$watch(
+          "dhxContextMenu",
+          function handle( newValue) {
+            tree.enableContextMenu(newValue);
+          }
+        );
 
         // Additional optional configuration
         tree.enableCheckBoxes(scope.dhxEnableCheckBoxes);

@@ -68,24 +68,24 @@ angular.module('myApp').factory('Model', [function () {
             }
           ]
         },
-        //{
-        //  "id": "navCmps",
-        //  "text": "Navigation",
-        //  "item": [
+        {
+          "id": "navCmps",
+          "text": "Navigation",
+          "item": [
         //    {
         //      "id": "Toolbar",
         //      "text": "Toolbar"
         //    },
-        //    {
-        //      "id": "Menu",
-        //      "text": "Menu"
-        //    },
+            {
+              "id": "Menu",
+              "text": "Menu"
+            }//,
         //    {
         //      "id": "Ribbon",
         //      "text": "Ribbon"
         //    }
-        //  ]
-        //},
+          ]
+        },
         //{
         //  "id": "navLayoutCmps",
         //  "text": "Navigation & Layout",

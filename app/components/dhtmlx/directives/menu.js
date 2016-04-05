@@ -36,7 +36,7 @@ angular.module('dhxDirectives')
         dhxContextZones: '=',
         dhxContextAsParent: '='
       },
-      link: function (scope, element, attrs, menuCtrl) {
+      link: function (scope, element/*, attrs, menuCtrl*/) {
         //noinspection JSPotentiallyInvalidConstructorUsage
 
         var domChild = $(element).children().first().detach();

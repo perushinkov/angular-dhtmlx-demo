@@ -10,7 +10,7 @@ angular.module('myApp')
       // LAYOUT
       , 'cmpAccordion'
       // NAVIGATION
-      , 'cmpToolbar', 'cmpMenu', 'cmpRibbon'
+      , 'cmpToolbar', 'cmpRibbon'
       // NAV & LAYOUT
       , 'cmpSidebar'
       // FORM CMP
@@ -24,6 +24,7 @@ angular.module('myApp')
       // LAYOUT
       , 'cmpWindows', 'cmpLayout', 'cmpTabbar'
       // NAVIGATION
+      ,'cmpMenu'
       // NAV & LAYOUT
       // FORM CMP
       , 'cmpForm'

@@ -1,17 +1,3 @@
-
-<p> Loading from HTML </p>
-
-<dhx-menu
-  dhx-load-from-html="true"
-  dhx-on-click="alert">
-  <div style="display: none;">
-    <div id="m1" text="File"> // the first top menu item
-      <div id="m11" text="New" <hotkey>Ctrl+N</hotkey></div>// the first child item
-    <div id="ms1" type="separator"></div> // a separator
-    <div id="m12" text="Open"><hotkey>Ctrl+O</hotkey></div> // the second child item
-  </div>
-</dhx-menu>
-<br>
 <p> Loading from XML as Dom </p>
 <dhx-menu
   dhx-load-xml-from-dom="true"
@@ -44,6 +30,8 @@
     </item>
   </menu>
 </dhx-menu>
+
+
 <br>
 <p> Loading from json variable </p>
 
@@ -53,8 +41,10 @@
   ></dhx-menu>
 
 <br>
-<p> Loading from json variable in Context Menu mode</p>
 
+
+
+<p> Loading from json variable in Context Menu mode</p>
 <grouper>
   <dhx-menu
     dhx-on-click="alert"
@@ -64,3 +54,18 @@
     ></dhx-menu>
   <p>Context menu here!</p>
 </grouper>
+
+<br>
+
+<p> Loading from HTML </p>
+
+<dhx-menu
+  dhx-load-from-html="true"
+  dhx-on-click="alert">
+  <div style="display: none;">
+    <div id="m1" text="File"> // the first top menu item
+      <div id="m11" text="New" <hotkey>Ctrl+N</hotkey></div>// the first child item
+    <div id="ms1" type="separator"></div> // a separator
+    <div id="m12" text="Open"><hotkey>Ctrl+O</hotkey></div> // the second child item
+  </div>
+</dhx-menu>

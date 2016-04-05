@@ -9,6 +9,8 @@ Note that if you need to use this code with DHTMLX for commercial purposes you w
 Second:
 I am new to grunt, and overall a recent fan of Angular.js, so feel free to point out any issues. 
 
+Third:
+TreeGrid is functional only under the PRO version. Note that on checkout this demo works with the dhtmlx version that is free under gpl. Feel free to replace it with the PRO version to check out how TreeGrid works.
 
 ## Completed:
 <ul>
@@ -42,6 +44,16 @@ I am new to grunt, and overall a recent fan of Angular.js, so feel free to point
       </li>
     </ul>
   </li>
+  <li>
+   <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/menu.js">dhtmlXMenu</a>
+   <ul>
+     <li>
+       <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/root/cmp/menu">
+         Example use
+       </a>
+     </li>
+   </ul>
+ </li>
   <li>
     <a href="https://github.com/perushinkov/angular-dhtmlx-demo/blob/master/app/components/dhtmlx/directives/popup.js">dhtmlXPopup</a>
     <ul>

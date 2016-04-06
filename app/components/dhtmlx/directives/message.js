@@ -69,7 +69,8 @@ angular.module('dhxDirectives')
             }
           );
         };
-        scope.dhxInvoker !== undefined ? scope.dhxInvoker = invoker : '';
+        //scope.dhxInvoker !== undefined ? scope.dhxInvoker = invoker : '';
+        scope.dhxInvoker = invoker;
         if(scope.dhxInvokeOnCreate) {
           invoker();
         }

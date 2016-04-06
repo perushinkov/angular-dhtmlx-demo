@@ -41,16 +41,15 @@ angular.module('dhxDirectives')
         var rootElem = element.children().first();
 
         var dim = (scope.dhxUseEms ? 'em' : 'px');
-        var height = scope.dhxHeight? (scope.dhxHeight + dim) : console.warn('Please set dhx-layout height!');
         //TODO: Come up with a way to do 100% height (Within current container)
+        var height = scope.dhxHeight? (scope.dhxHeight + dim) : console.warn('Please set dhx-layout height!');
         var width = scope.dhxWidth? (scope.dhxWidth + dim) : '100%';
 
-        //rootElem.css('max-width', width);
-        rootElem.css('width', /*width*/ '100%');
-        rootElem.css('height', /*height*/ '100%');
-        //rootElem.css('padding', '0px');
-        //rootElem.css('margin', '0px');
-        //rootElem.css('overflow', 'hidden');
+        rootElem.css('width', width);
+        rootElem.css('height', height);
+        rootElem.css('padding', '0px');
+        rootElem.css('margin', '0px');
+        rootElem.css('overflow', 'hidden');
         rootElem.css('display', 'block');
 
         //noinspection JSPotentiallyInvalidConstructorUsage

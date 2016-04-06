@@ -72,12 +72,19 @@ angular.module('dhxDirectives')
             $('<div></div>').appendTo(element[0]);
             var rootElem = element.children().first();
 
-            scope.dhxMaxWidth ? rootElem.css('width', scope.dhxMaxWidth + 'px') : '';
-            scope.dhxMaxHeight ? rootElem.css('height', scope.dhxMaxHeight + 'px') : '';
+            var width = scope.dhxMaxWidth ? (scope.dhxMaxWidth + 'px') : '100%';
+            var height = scope.dhxMaxHeight ? (scope.dhxMaxHeight + 'px') : '100%';
+
+            rootElem.css('width', width);
+            rootElem.css('height', height);
 
             //noinspection JSPotentiallyInvalidConstructorUsage
             var grid = new dhtmlXGridObject(rootElem[0]);
             grid.setImagePath(DhxUtils.getImagePath());
+
+            grid.enableAutoHeight(!!scope.dhxMaxHeight, scope.dhxMaxHeight, true);
+            grid.enableAutoWidth(!!scope.dhxMaxWidth, scope.dhxMaxWidth, true);
+
 
             scope.dhxContextMenu ? grid.enableContextMenu(scope.dhxContextMenu) : '';
             scope.$watch(
@@ -116,10 +123,6 @@ angular.module('dhxDirectives')
               scope.dhxOnDataLoaded(grid);
             }
 
-            grid.enableAutoHeight(!!scope.dhxMaxHeight ? scope.dhxMaxHeight : true);
-            grid.enableAutoWidth(!!scope.dhxMaxWidth ? scope.dhxMaxWidth : true);
-
-            grid.setSizes();
             DhxUtils.attachDhxHandlers(grid, scope.dhxHandlers);
             DhxUtils.dhxUnloadOnScopeDestroy(scope, grid);
           };

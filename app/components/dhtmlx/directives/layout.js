@@ -33,7 +33,9 @@ angular.module('dhxDirectives')
         dhxWidth: "=", // Optional... Default is 100%. If set, use ems or pixels.
         dhxHeight: "=", // Mandatory.
         dhxUseEms: "=", // Optional... If width and height is in ems. Px is   default;
-        dhxHandlers: '='
+        dhxHandlers: '=',
+        dhxObj: '=',
+        dhxWhenDone: '='
       },
       link: function (scope, element, attrs, layoutCtrl) {
         $(element).empty();
@@ -42,7 +44,7 @@ angular.module('dhxDirectives')
 
         var dim = (scope.dhxUseEms ? 'em' : 'px');
         //TODO: Come up with a way to do 100% height (Within current container)
-        var height = scope.dhxHeight? (scope.dhxHeight + dim) : console.warn('Please set dhx-layout height!');
+        var height = scope.dhxHeight? (scope.dhxHeight + dim) : '100%';//console.warn('Please set dhx-layout height!');
         var width = scope.dhxWidth? (scope.dhxWidth + dim) : '100%';
 
         rootElem.css('width', width);
@@ -53,6 +55,7 @@ angular.module('dhxDirectives')
         rootElem.css('display', 'block');
 
         //noinspection JSPotentiallyInvalidConstructorUsage
+        rootElem[0]._isParentCell = true;
         var layout = new dhtmlXLayoutObject({
             parent: rootElem[0],
             pattern: scope.dhxLayoutCode,
@@ -70,14 +73,22 @@ angular.module('dhxDirectives')
               })
           }
         );
+        if (scope.dhxObj)
+          scope.dhxObj = layout;
         layout.setSizes();
 
         for (var i = 0; i < scope.panes.length; i++) {
-          layout.cells(letters[i]).appendObject(scope.panes[i].jqElem[0]);
+          var dom =  scope.panes[i].jqElem[0];
+          if (dom != null) {
+            layout.cells(letters[i]).appendObject(dom);
+          }
+          
         }
         DhxUtils.attachDhxHandlers(layout, scope.dhxHandlers);
         DhxUtils.dhxUnloadOnScopeDestroy(scope, layout);
-      }
+		if (scope.dhxWhenDone) {
+			scope.dhxWhenDone(layout);
+		}      }
     };
   })
   .directive('dhxLayoutPane', function factory() {

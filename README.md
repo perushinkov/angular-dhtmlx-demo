@@ -12,6 +12,9 @@ I am new to grunt, and overall a recent fan of Angular.js, so feel free to point
 Third:
 TreeGrid is functional only under the PRO version. Note that on checkout this demo works with the dhtmlx version that is free under gpl. Feel free to replace it with the PRO version to check out how TreeGrid works.
 
+Fourth:
+I will not guarantee that changes I make are backwards compatible. I still will try to make it so.
+
 ## Completed:
 <ul>
   <li>

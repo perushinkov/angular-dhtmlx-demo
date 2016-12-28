@@ -79,7 +79,12 @@ angular.module('dhxDirectives')
             rootElem.css('height', height);
 
             //noinspection JSPotentiallyInvalidConstructorUsage
-            var grid = new dhtmlXGridObject(rootElem[0]);
+            if (scope.dhxObj) {
+              DhxUtils.dhxDestroy(scope.dhxObj);
+            }
+            scope.dhxObj = new dhtmlXGridObject(rootElem[0]);
+            var grid = scope.dhxObj;
+
             grid.setImagePath(DhxUtils.getImagePath());
 
             grid.enableAutoHeight(!!scope.dhxMaxHeight, scope.dhxMaxHeight, true);

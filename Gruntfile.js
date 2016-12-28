@@ -376,8 +376,7 @@ module.exports = function (grunt) {
             src: [
               '*.{ico,png,txt}',
               '*.html',
-              'root/{,*/}*.html',
-              'root/{,*/}*.js',
+              'root/**/*',
               'app.js',
               'assets/{,*/}*.*',
               'components/**/*',

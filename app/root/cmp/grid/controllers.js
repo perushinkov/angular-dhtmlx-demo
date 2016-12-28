@@ -4,6 +4,14 @@
  */
 angular.module('myApp')
   .controller('GridController', ['$scope' ,function ($scope) {
+    $scope.grid = {
+      obj: {},
+      handlers: [
+        {type: "onRowSelect", handler: function (id) {
+          $scope.grid.obj.deleteRow(id);
+        }}
+      ]
+    };
     $scope.contextMenu = {};
     $scope.gridData = {
       rows:[

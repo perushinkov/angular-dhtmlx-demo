@@ -1,8 +1,13 @@
+Click a row to have it deleted!
+
 <dhx-grid
+  dhx-obj="grid.obj"
   style="height: 100%"
   dhx-data="gridData"
+  dhx-col-sorting="'str,str,int'"
   dhx-header="'Title,Author,Copies sold'"
   dhx-context-menu="contextMenu"
+  dhx-handlers="grid.handlers"
   ></dhx-grid>
 
 

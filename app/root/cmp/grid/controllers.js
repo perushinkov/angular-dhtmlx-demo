@@ -23,11 +23,11 @@ angular.module('myApp')
     $scope.contextMenu = {};
     $scope.gridData = {
       rows:[
-        { id:1, data: ["No time to think", "John Grasham", "100"]},
-        { id:2, data: ["Of fancy title ", "Stephen Pink", "2000"]},
-        { id:3, data: ["And that is why", "Terry Brattchet", "3000"]},
-        { id:4, data: ["Have this recital", "Isaac Zimov", "4000"]},
-        { id:5, data: ["The End!", "Sax Pear", "5000"]}
+        { id:1, data: ["Click a row", "John Grasham", "100"]},
+        { id:2, data: ["to have it", "Stephen Pink", "2000"]},
+        { id:3, data: ["deleted", "Terry Brattchet", "3000"]},
+        { id:4, data: ["La la la", "Isaac Zimov", "4000"]},
+        { id:5, data: ["La la la", "Sax Pear", "5000"]}
       ]
     };
   }]);

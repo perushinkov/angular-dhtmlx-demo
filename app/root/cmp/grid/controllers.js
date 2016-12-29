@@ -12,6 +12,14 @@ angular.module('myApp')
         }}
       ]
     };
+
+    $scope.alert = function alert(event_name) {
+      switch (event_name) {
+        case "refreshsize":
+          $scope.grid.obj.setSizes();
+      }
+    };
+
     $scope.contextMenu = {};
     $scope.gridData = {
       rows:[
